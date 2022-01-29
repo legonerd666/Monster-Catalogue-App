@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import MonsterNavigator from "./navigation/MonsterNavigator";
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    "dancing-script": require("./assets/fonts/DancingScript-Regular.ttf"),
-    "dancing-script-bold": require("./assets/fonts/DancingScript-Bold.ttf"),
-    "dancing-script-Medium": require("./assets/fonts/DancingScript-Medium.ttf"),
-    "dancing-script-SemiBold": require("./assets/fonts/DancingScript-SemiBold.ttf"),
+    "caveat": require("./assets/fonts/Caveat-Regular.ttf"),
+    "caveat-bold": require("./assets/fonts/Caveat-Bold.ttf"),
+    "caveat-medium": require("./assets/fonts/Caveat-Medium.ttf"),
+    "caveat-semi-bold": require("./assets/fonts/Caveat-SemiBold.ttf"),
   });
 };
 
@@ -25,11 +26,7 @@ export default function App() {
     );
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+  return <MonsterNavigator />;
 }
 
 const styles = StyleSheet.create({

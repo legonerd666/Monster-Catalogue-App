@@ -1,10 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const MonstersScreen = (props: any) => {
   return (
     <View style={styles.screen}>
       <Text>This is the Monster Screen</Text>
+      <Button
+        title="Go to Monster Detail Screen"
+        onPress={() => {
+          props.navigation.navigate("MonsterDetails");
+        }}
+      ></Button>
     </View>
   );
 };
