@@ -11,6 +11,7 @@ import {
 import { FadeFromBottomAndroid } from "react-navigation-stack/lib/typescript/src/vendor/TransitionConfigs/TransitionPresets";
 import { MONSTERS } from "../data/monster-data";
 import Colors from "../constants/Colors";
+import DefaultText from "../components/DefaultText";
 
 const MonstersScreen = (props: any) => {
   const renderGridItem = (itemData: any) => {
@@ -26,7 +27,7 @@ const MonstersScreen = (props: any) => {
         }}
       >
         <View style={styles.gridItem}>
-          <Text>{itemData.item.name}</Text>
+          <DefaultText>{itemData.item.name}</DefaultText>
         </View>
       </TouchableNativeFeedback>
     );

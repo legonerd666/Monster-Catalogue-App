@@ -6,7 +6,7 @@ class Monster {
   appearance: string;
   size: string;
   statistics: string;
-  abilities: string[];
+  abilities: string;
   description: string;
   habitat: string;
   notes: string;
@@ -21,7 +21,7 @@ class Monster {
     appearance: string,
     size: string,
     statistics: string,
-    abilities: string[],
+    abilities: string,
     description: string,
     habitat: string,
     notes: string,

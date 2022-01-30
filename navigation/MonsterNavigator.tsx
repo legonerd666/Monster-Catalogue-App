@@ -44,6 +44,11 @@ const MonsterNavigator = createStackNavigator(
       },
       headerTintColor:
         Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
+      headerTitleStyle: {
+        fontFamily: "caveat-bold",
+        fontSize: 30,
+        marginRight: 30,
+      },
     },
   }
 );

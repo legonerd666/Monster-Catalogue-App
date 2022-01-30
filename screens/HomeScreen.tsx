@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, Button, Platform, StyleSheet } from "react-native";
+import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
 
 const HomeScreen = (props: any) => {
   return (
     <View style={styles.screen}>
-      <Text>This is the Home Screen</Text>
+      <DefaultText>This is the Home Screen</DefaultText>
       <Button
         title="Go to Monsters Screen"
         onPress={() => {
