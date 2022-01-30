@@ -1,15 +1,17 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, Platform, StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
 
 const HomeScreen = (props: any) => {
-  console.log(props);
   return (
     <View style={styles.screen}>
       <Text>This is the Home Screen</Text>
       <Button
         title="Go to Monsters Screen"
         onPress={() => {
-          props.navigation.navigate("Monsters");
+          props.navigation.navigate({
+            routeName: "Monsters",
+          });
         }}
       ></Button>
     </View>
