@@ -1,23 +1,15 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  FlatList,
-  TouchableNativeFeedback,
-  Platform,
-  StyleSheet,
-} from "react-native";
-import { FadeFromBottomAndroid } from "react-navigation-stack/lib/typescript/src/vendor/TransitionConfigs/TransitionPresets";
+import { View, FlatList, StyleSheet } from "react-native";
 import { MONSTERS } from "../data/monster-data";
-import Colors from "../constants/Colors";
-import DefaultText from "../components/DefaultText";
+import MonsterGridTile from "../components/MonsterGridTile";
 
 const MonstersScreen = (props: any) => {
   const renderGridItem = (itemData: any) => {
     return (
-      <TouchableNativeFeedback
-        onPress={() => {
+      <MonsterGridTile
+        name={itemData.item.name}
+        bgcolor={itemData.item.bgcolor}
+        onSelect={() => {
           props.navigation.navigate({
             routeName: "MonsterDetails",
             params: {
@@ -25,11 +17,7 @@ const MonstersScreen = (props: any) => {
             },
           });
         }}
-      >
-        <View style={styles.gridItem}>
-          <DefaultText>{itemData.item.name}</DefaultText>
-        </View>
-      </TouchableNativeFeedback>
+      />
     );
   };
 
@@ -45,12 +33,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  gridItem: {
-    flex: 1,
-    margin: 15,
-    height: 150,
-    justifyContent: "flex-end",
   },
 });
 

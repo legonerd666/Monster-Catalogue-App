@@ -1,21 +1,23 @@
 import React from "react";
-import { View, Text, Button, Platform, StyleSheet } from "react-native";
+import { View, TouchableNativeFeedback, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
+import MonstersScreen from "./MonstersScreen";
 
 const HomeScreen = (props: any) => {
   return (
-    <View style={styles.screen}>
-      <DefaultText>This is the Home Screen</DefaultText>
-      <Button
-        title="Go to Monsters Screen"
-        onPress={() => {
-          props.navigation.navigate({
-            routeName: "Monsters",
-          });
-        }}
-      ></Button>
-    </View>
+    <TouchableNativeFeedback
+      onPress={() => {
+        props.navigation.navigate({
+          routeName: "Monsters",
+        });
+      }}
+    >
+      <View style={styles.screen}>
+        <DefaultText>Ithrell's Catalogue of Critters and Beasts </DefaultText>
+        <DefaultText style={styles.notice}>(Tap to Open)</DefaultText>
+      </View>
+    </TouchableNativeFeedback>
   );
 };
 
@@ -24,6 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  notice: {
+    fontSize: 10,
   },
 });
 

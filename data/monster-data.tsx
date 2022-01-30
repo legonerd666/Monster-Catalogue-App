@@ -14,7 +14,7 @@ export const MONSTERS = [
     "Gypthell's Shoulder ",
     "Cute, Empress ",
     "N/A ",
-    "#fff"
+    "#00ffbb"
   ),
   new Monster(
     2,
@@ -29,6 +29,6 @@ export const MONSTERS = [
     "Mushroom Caverns ",
     "Flinched and seemed to get blinded by light, even when not too bright ",
     "N/A ",
-    "#fff"
+    "#6f9141"
   ),
 ];

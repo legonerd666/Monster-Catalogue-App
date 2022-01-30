@@ -12,13 +12,13 @@ const MonsterNavigator = createStackNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        headerTitle: "Monster Catalogue",
+        headerTitle: "Ithrell's Catalogue of Critters and Beasts ",
       },
     },
     Monsters: {
       screen: MonstersScreen,
       navigationOptions: {
-        headerTitle: "Monsters",
+        headerTitle: "Critters and Beasts ",
       },
     },
     MonsterDetails: {
