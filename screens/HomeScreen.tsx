@@ -1,8 +1,6 @@
 import React from "react";
 import { View, TouchableNativeFeedback, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
-import Colors from "../constants/Colors";
-import MonstersScreen from "./MonstersScreen";
 
 const HomeScreen = (props: any) => {
   return (

@@ -3,7 +3,6 @@ import { View, FlatList, StyleSheet } from "react-native";
 import { MONSTERS } from "../data/monster-data";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
-import Monster from "../models/monster";
 
 const MonsterDetailsScreen = (props: any) => {
   const monsterId = props.navigation.getParam("monsterId");
