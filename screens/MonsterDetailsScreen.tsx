@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { MONSTERS } from "../data/monster-data";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 
@@ -16,7 +15,18 @@ const MonsterDetailsScreen = (props: any) => {
     );
   };
 
-  const selectedMonster = MONSTERS.find((monster) => monster.id === monsterId);
+  useEffect(() => {
+    data = require("../data/monster-data.json");
+    setMonsters(data);
+  });
+
+  let data = require("../data/monster-data.json");
+
+  const [Monsters, setMonsters] = useState(data);
+
+  const selectedMonster = Monsters.find(
+    (monster: any) => monster.id === monsterId
+  );
 
   const [monsterData, setmonsterData] = useState([
     { category: "Name: ", data: selectedMonster?.name, key: 1 },
@@ -30,6 +40,7 @@ const MonsterDetailsScreen = (props: any) => {
     { category: "Known Habitat: ", data: selectedMonster?.habitat, key: 9 },
     { category: "Notes: ", data: selectedMonster?.notes, key: 10 },
   ]);
+
   return (
     <View style={styles.screen}>
       <FlatList data={monsterData} renderItem={renderData} />
@@ -38,8 +49,11 @@ const MonsterDetailsScreen = (props: any) => {
 };
 
 MonsterDetailsScreen.navigationOptions = (navigationData: any) => {
+  const Monsters = require("../data/monster-data.json");
   const monsterId = navigationData.navigation.getParam("monsterId");
-  const selectedMonster = MONSTERS.find((monster) => monster.id === monsterId);
+  const selectedMonster = Monsters.find(
+    (monster: any) => monster.id === monsterId
+  );
   return {
     headerTitle: selectedMonster?.name,
   };

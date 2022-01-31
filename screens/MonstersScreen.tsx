@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
-import { MONSTERS } from "../data/monster-data";
 import MonsterGridTile from "../components/MonsterGridTile";
 import Monster from "../models/monster";
 
@@ -24,11 +23,11 @@ const MonstersScreen = (props: any) => {
 
   const Filter = (text: string) => {
     if (text === "") {
-      setFilteredMonsters(MONSTERS);
+      setFilteredMonsters(data);
       return filteredMonsters;
     }
     const tempMonsters: Monster[] = [];
-    MONSTERS.forEach((monster) => {
+    data.forEach((monster: any) => {
       if (monster.name.toLowerCase().includes(text.toLowerCase())) {
         tempMonsters.push(monster);
       }
@@ -37,7 +36,16 @@ const MonstersScreen = (props: any) => {
     return filteredMonsters;
   };
 
-  const [filteredMonsters, setFilteredMonsters] = useState(MONSTERS);
+  useEffect(() => {
+    data = require("../data/monster-data.json");
+    setMonsters(data);
+  });
+
+  let data = require("../data/monster-data.json");
+
+  const [Monsters, setMonsters] = useState(data);
+
+  const [filteredMonsters, setFilteredMonsters] = useState(Monsters);
 
   return (
     <View style={styles.screen}>

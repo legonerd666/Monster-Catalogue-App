@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Empress Bethany Von Shwiez ",
+    "species": "Lizard ",
+    "color": "Turqoise",
+    "appearance": "Small turquoise fire breathing lizard ",
+    "size": "10\" long ",
+    "statistic": "Unknown ",
+    "abilities": "Fire Breath",
+    "description": "Bethany is a small, turquiose fire-breathing lizard that travels with her servant Gypthell ",
+    "habitat": "Gypthell's Shoulder ",
+    "notes": "Cute, Empress ",
+    "picture": "N/A ",
+    "bgcolor": "#00ffbb"
+  },
+  {
+    "id": 2,
+    "name": "Weird Creature ",
+    "species": "Unknown ",
+    "color": "Greenish Gray ",
+    "appearance": "Sickly greenish gray skin, hunched, webbed hands and feet, long black spine-like hairs run along its spine and down its tail, long serpentine tongue, kinda flat nose, long sharp teeth and claws, gray lifeless unblinking eyes ",
+    "size": "Small Gutrarianoid ",
+    "statistic": "Unknown ",
+    "abilities": "Can fall long distances without being harmed\nCan burrow almost as fast as it can run\nCan walk on surfaces parallel to the ground with ease\nPossible good sense of smell (tracked smoke from campfire)",
+    "description": "Unknown unsettling creature found in the mushroom caverns outside of joyfull respite ",
+    "habitat": "Mushroom Caverns ",
+    "notes": "Flinched and seemed to get blinded by light, even when not too bright ",
+    "picture": "N/A ",
+    "bgcolor": "#6f9141"
+  }
+]

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, TextInput, ScrollView, Button, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import Colors from "../constants/Colors";
-import Monster from "../models/monster";
-import { MONSTERS } from "../data/monster-data";
 
 const AddEntryScreen = (props: any) => {
   const [name, setName] = useState("Unknown");
@@ -21,22 +19,31 @@ const AddEntryScreen = (props: any) => {
   const [picture, setPicture] = useState("N/A");
 
   const saveHandler = (props: any) => {
-    const newMonster = new Monster(
-      MONSTERS.length + 1,
-      name,
-      species,
-      color,
-      appearance,
-      size,
-      statistics,
-      abilities,
-      description,
-      habitat,
-      notes,
-      picture,
-      bgcolor
-    );
+    // const newMonster = new Monster(
+    //   Monsters.length + 1,
+    //   name,
+    //   species,
+    //   color,
+    //   appearance,
+    //   size,
+    //   statistics,
+    //   abilities,
+    //   description,
+    //   habitat,
+    //   notes,
+    //   picture,
+    //   bgcolor
+    // );
   };
+
+  useEffect(() => {
+    data = require("../data/monster-data.json");
+    setMonsters(data);
+  });
+
+  let data = require("../data/monster-data.json");
+
+  const [Monsters, setMonsters] = useState(data);
 
   return (
     <ScrollView>
