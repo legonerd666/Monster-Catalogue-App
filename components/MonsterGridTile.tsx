@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     margin: 15,
-    justifyContent: "flex-end",
-    alignItems: "center",
     height: 150,
   },
   container: {
@@ -33,6 +31,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 15,
     width: "100%",
+    alignItems: "center",
   },
   text: {
     fontSize: 25,

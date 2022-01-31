@@ -43,27 +43,27 @@ const MonstersScreen = (props: any) => {
     <View style={styles.screen}>
       <View style={styles.searchBarContainer}>
         <TextInput
-          style={styles.searchBar}
           placeholder="Filter by Name..."
           onChangeText={Filter}
           defaultValue=""
         />
       </View>
-      <FlatList
-        data={filteredMonsters}
-        renderItem={renderGridItem}
-        numColumns={1}
-        extraData={filteredMonsters}
-      />
+      <View style={styles.list}>
+        <FlatList
+          data={filteredMonsters}
+          renderItem={renderGridItem}
+          numColumns={1}
+          extraData={filteredMonsters}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
+    width: "100%",
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   searchBarContainer: {
     height: 50,
@@ -76,7 +76,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     elevation: 5,
   },
-  searchBar: {},
+  list: {
+    width: "80%",
+    alignSelf: "center",
+  },
 });
 
 export default MonstersScreen;
