@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import MonsterDetailsScreen from "../screens/MonsterDetailsScreen";
 import MonstersScreen from "../screens/MonstersScreen";
 import Colors from "../constants/Colors";
+import AddEntryScreen from "../screens/AddEntryScreen";
 
 const MonsterNavigator = createStackNavigator(
   {
@@ -23,15 +24,11 @@ const MonsterNavigator = createStackNavigator(
     },
     MonsterDetails: {
       screen: MonsterDetailsScreen,
+    },
+    AddEntry: {
+      screen: AddEntryScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor:
-            Platform.OS === "android"
-              ? Colors.primaryColor
-              : Colors.accentColor,
-        },
-        headerTintColor:
-          Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
+        headerTitle: "Add New Entry",
       },
     },
   },

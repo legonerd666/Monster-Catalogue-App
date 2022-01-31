@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, FlatList, TextInput, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import { MONSTERS } from "../data/monster-data";
 import MonsterGridTile from "../components/MonsterGridTile";
 import Monster from "../models/monster";
@@ -56,6 +56,12 @@ const MonstersScreen = (props: any) => {
           extraData={filteredMonsters}
         />
       </View>
+      <Button
+        title="Temp add new"
+        onPress={() => {
+          props.navigation.navigate({ routeName: "AddEntry" });
+        }}
+      />
     </View>
   );
 };
