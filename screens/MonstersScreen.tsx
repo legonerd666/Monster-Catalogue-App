@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, FlatList, TextInput, StyleSheet } from "react-native";
 import { MONSTERS } from "../data/monster-data";
 import MonsterGridTile from "../components/MonsterGridTile";
@@ -22,20 +22,22 @@ const MonstersScreen = (props: any) => {
     );
   };
 
-  const Filter = (props: any) => {
-    // setFilter(props.nativeEvent.text);
-    // const newFilteredMonsters: Monster[] = [];
-    // filteredMonsters.forEach((item) => {
-    //   if (item.name.includes(filter)) {
-    //     newFilteredMonsters.push(item);
-    //   }
-    //   setFilteredMonsters(newFilteredMonsters);
-    // });
+  const Filter = (text: string) => {
+    if (text === "") {
+      setFilteredMonsters(MONSTERS);
+      return filteredMonsters;
+    }
+    const tempMonsters: Monster[] = [];
+    MONSTERS.forEach((monster) => {
+      if (monster.name.toLowerCase().includes(text.toLowerCase())) {
+        tempMonsters.push(monster);
+      }
+    });
+    setFilteredMonsters(tempMonsters);
+    return filteredMonsters;
   };
 
   const [filteredMonsters, setFilteredMonsters] = useState(MONSTERS);
-
-  const [filter, setFilter] = useState("");
 
   return (
     <View style={styles.screen}>
@@ -43,11 +45,16 @@ const MonstersScreen = (props: any) => {
         <TextInput
           style={styles.searchBar}
           placeholder="Filter by Name..."
-          onChange={Filter}
+          onChangeText={Filter}
           defaultValue=""
         />
       </View>
-      <FlatList data={MONSTERS} renderItem={renderGridItem} numColumns={1} />
+      <FlatList
+        data={filteredMonsters}
+        renderItem={renderGridItem}
+        numColumns={1}
+        extraData={filteredMonsters}
+      />
     </View>
   );
 };
@@ -56,6 +63,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
   },
   searchBarContainer: {
     height: 50,
@@ -63,6 +71,7 @@ const styles = StyleSheet.create({
     width: "73%",
     backgroundColor: "#ccc",
     justifyContent: "center",
+    alignSelf: "center",
     paddingHorizontal: 10,
     marginVertical: 10,
     elevation: 5,
