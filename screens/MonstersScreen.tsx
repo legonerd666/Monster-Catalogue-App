@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import MonsterGridTile from "../components/MonsterGridTile";
-import Monster from "../models/monster";
 
 const MonstersScreen = (props: any) => {
   const renderGridItem = (itemData: any) => {
@@ -26,7 +25,7 @@ const MonstersScreen = (props: any) => {
       setFilteredMonsters(data);
       return filteredMonsters;
     }
-    const tempMonsters: Monster[] = [];
+    const tempMonsters: any[] = [];
     data.forEach((monster: any) => {
       if (monster.name.toLowerCase().includes(text.toLowerCase())) {
         tempMonsters.push(monster);
