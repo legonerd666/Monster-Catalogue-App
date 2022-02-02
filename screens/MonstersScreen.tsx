@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   screen: {
     width: "100%",
     flex: 1,
+    paddingBottom: 120,
   },
   searchBarContainer: {
     height: 50,

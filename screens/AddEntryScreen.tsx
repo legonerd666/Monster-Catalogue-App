@@ -3,8 +3,18 @@ import { View, TextInput, ScrollView, Button, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import Colors from "../constants/Colors";
+import DataManipulation from "../functions/DataManipulation";
+import AppLoading from "expo-app-loading";
 
 const AddEntryScreen = (props: any) => {
+  const fetchData = () => {
+    return dataManipulation.storeLoadedData();
+  };
+
+  const [dataManipulation, setDataManipulation] = useState(
+    new DataManipulation()
+  );
+
   const [name, setName] = useState("Unknown");
   const [species, setSpecies] = useState("Unknown");
   const [color, setColor] = useState("Unknown");
@@ -19,31 +29,43 @@ const AddEntryScreen = (props: any) => {
   const [picture, setPicture] = useState("N/A");
 
   const saveHandler = (props: any) => {
-    // const newMonster = new Monster(
-    //   Monsters.length + 1,
-    //   name,
-    //   species,
-    //   color,
-    //   appearance,
-    //   size,
-    //   statistics,
-    //   abilities,
-    //   description,
-    //   habitat,
-    //   notes,
-    //   picture,
-    //   bgcolor
-    // );
+    const newMonsters = dataManipulation.getData();
+
+    const newMonster = {
+      id: newMonsters.length + 1,
+      name: name,
+      species: species,
+      color: color,
+      appearance: appearance,
+      size: size,
+      statistics: statistics,
+      abilities: abilities,
+      description: description,
+      habitat: habitat,
+      notes: notes,
+      picture: picture,
+      bgcolor: bgcolor,
+    };
+    newMonsters.push(newMonster);
+    dataManipulation.setData(newMonsters);
+    dataManipulation.saveData();
+    alert("Saved");
+    props.navigation.popToTop();
   };
 
-  useEffect(() => {
-    data = require("../data/monster-data.json");
-    setMonsters(data);
-  });
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-  let data = require("../data/monster-data.json");
-
-  const [Monsters, setMonsters] = useState(data);
+  if (!dataIsLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchData}
+        onFinish={() => {
+          setDataIsLoaded(true);
+        }}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   return (
     <ScrollView>
@@ -161,7 +183,12 @@ const AddEntryScreen = (props: any) => {
             defaultValue=""
           />
         </View>
-        <Button title="Save" onPress={saveHandler} />
+        <Button
+          title="Save"
+          onPress={() => {
+            saveHandler(props);
+          }}
+        />
       </View>
     </ScrollView>
   );
