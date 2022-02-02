@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import MonsterGridTile from "../components/MonsterGridTile";
+import DataManipulation from "../functions/DataManipulation";
+import AppLoading from "expo-app-loading";
 
 const MonstersScreen = (props: any) => {
+  const fetchData = () => {
+    return dataManipulation.storeLoadedData();
+  };
+
   const renderGridItem = (itemData: any) => {
     return (
       <MonsterGridTile
@@ -22,29 +28,44 @@ const MonstersScreen = (props: any) => {
 
   const Filter = (text: string) => {
     if (text === "") {
-      setFilteredMonsters(data);
-      return filteredMonsters;
+      setFilteredMonsters(dataManipulation.getData);
+      return;
     }
     const tempMonsters: any[] = [];
-    data.forEach((monster: any) => {
+    dataManipulation.getData().forEach((monster: any) => {
       if (monster.name.toLowerCase().includes(text.toLowerCase())) {
         tempMonsters.push(monster);
       }
     });
     setFilteredMonsters(tempMonsters);
-    return filteredMonsters;
   };
 
+  const [dataManipulation, setDataManipulation] = useState(
+    new DataManipulation()
+  );
+
+  const [filteredMonsters, setFilteredMonsters] = useState(
+    dataManipulation.getData
+  );
+
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
   useEffect(() => {
-    data = require("../data/monster-data.json");
-    setMonsters(data);
-  });
+    dataManipulation.storeLoadedData();
+  }, [dataManipulation, filteredMonsters]);
 
-  let data = require("../data/monster-data.json");
-
-  const [Monsters, setMonsters] = useState(data);
-
-  const [filteredMonsters, setFilteredMonsters] = useState(Monsters);
+  if (!dataIsLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchData}
+        onFinish={() => {
+          setFilteredMonsters(dataManipulation.getData);
+          setDataIsLoaded(true);
+        }}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   return (
     <View style={styles.screen}>
