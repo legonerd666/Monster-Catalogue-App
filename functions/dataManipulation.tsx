@@ -4,7 +4,7 @@ class dataManipulation {
   saveData = async () => {
     try {
       const jsonValue = JSON.stringify(this.data);
-      await AsyncStorage.setItem("TestMonsterDataLocation", jsonValue);
+      await AsyncStorage.setItem("LocalMonsterData", jsonValue);
     } catch (e) {
       alert(e);
     }
@@ -12,7 +12,7 @@ class dataManipulation {
 
   private loadData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem("TestMonsterDataLocation");
+      const jsonValue = await AsyncStorage.getItem("LocalMonsterData");
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       alert(e);
