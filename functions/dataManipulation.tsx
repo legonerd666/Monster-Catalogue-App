@@ -20,25 +20,13 @@ class dataManipulation {
   };
 
   resetData = async () => {
-    try {
-      const value = require("../data/monster-data.json");
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("TestMonsterDataLocation", jsonValue);
-      this.storeLoadedData();
-    } catch (e) {
-      alert(e);
-    }
+    this.data = require("../data/monster-data.json");
+    this.saveData();
   };
 
   clearData = async () => {
-    try {
-      const value: any[] = [];
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("TestMonsterDataLocation", jsonValue);
-      this.storeLoadedData();
-    } catch (e) {
-      alert(e);
-    }
+    this.data = [];
+    this.saveData();
   };
 
   storeLoadedData = async () => {

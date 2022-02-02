@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TouchableNativeFeedback, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
-import DataManipulation from "../functions/dataManipulation";
+import DataManipulation from "../functions/DataManipulation";
 
 const HomeScreen = (props: any) => {
   const [dataManipulation, setDataManipulation] = useState(
