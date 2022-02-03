@@ -3,6 +3,8 @@ import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
 import MonsterGridTile from "../components/MonsterGridTile";
 import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../components/HeaderButton";
 
 const MonstersScreen = (props: any) => {
   const fetchData = () => {
@@ -85,14 +87,26 @@ const MonstersScreen = (props: any) => {
           extraData={filteredMonsters}
         />
       </View>
-      <Button
-        title="Temp add new"
-        onPress={() => {
-          props.navigation.navigate({ routeName: "AddEntry" });
-        }}
-      />
     </View>
   );
+};
+
+MonstersScreen.navigationOptions = (navigationData: any) => {
+  return {
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Add New"
+          iconName="add"
+          onPress={() => {
+            navigationData.navigation.navigate({
+              routeName: "AddEntry",
+            });
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
