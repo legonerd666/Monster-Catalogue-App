@@ -105,6 +105,13 @@ const MonsterDetailsScreen = (props: any) => {
   );
 };
 
+MonsterDetailsScreen.navigationOptions = (navigationData: any) => {
+  const name = navigationData.navigation.getParam("monsterName");
+  return {
+    headerTitle: name,
+  };
+};
+
 const styles = StyleSheet.create({
   screen: {
     alignItems: "center",

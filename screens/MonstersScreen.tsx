@@ -19,6 +19,7 @@ const MonstersScreen = (props: any) => {
             routeName: "MonsterDetails",
             params: {
               monsterId: itemData.item.id,
+              monsterName: itemData.item.name,
             },
           });
         }}
