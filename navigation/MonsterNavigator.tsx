@@ -24,6 +24,9 @@ const MonsterNavigator = createStackNavigator(
     },
     MonsterDetails: {
       screen: MonsterDetailsScreen,
+      navigationOptions: {
+        headerTitle: "Details ",
+      },
     },
     AddEntry: {
       screen: AddEntryScreen,

@@ -1,80 +1,126 @@
-import React, { useEffect, useState } from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
+import DataManipulation from "../functions/DataManipulation";
+import AppLoading from "expo-app-loading";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MonsterDetailsScreen = (props: any) => {
-  const monsterId = props.navigation.getParam("monsterId");
+  const dataManipulation = new DataManipulation();
 
-  const renderData = (itemData: any) => {
-    return (
-      <View style={styles.dataItem}>
-        <BoldText style={styles.category}>{itemData.item.category}</BoldText>
-        <DefaultText style={styles.data}>{itemData.item.data}</DefaultText>
-      </View>
-    );
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
+  const fetchData = () => {
+    return dataManipulation.storeLoadedData();
   };
 
-  useEffect(() => {
-    data = require("../data/monster-data.json");
-    setMonsters(data);
+  const [monster, setMonster] = useState({
+    name: "Failed to read",
+    species: "Failed to read",
+    color: "Failed to read",
+    appearance: "Failed to read",
+    size: "Failed to read",
+    statistics: "Failed to read",
+    abilities: "Failed to read",
+    description: "Failed to read",
+    habitat: "Failed to read",
+    notes: "Failed to read",
   });
 
-  let data = require("../data/monster-data.json");
+  const monsterId = props.navigation.getParam("monsterId");
 
-  const [Monsters, setMonsters] = useState(data);
+  const finishHandler = () => {
+    setMonster(
+      dataManipulation
+        .getData()
+        .find((monsterById) => monsterById.id === monsterId)
+    );
+    setDataIsLoaded(true);
+  };
 
-  const selectedMonster = Monsters.find(
-    (monster: any) => monster.id === monsterId
-  );
-
-  const [monsterData, setmonsterData] = useState([
-    { category: "Name: ", data: selectedMonster?.name, key: 1 },
-    { category: "Species: ", data: selectedMonster?.species, key: 2 },
-    { category: "Color: ", data: selectedMonster?.color, key: 3 },
-    { category: "Appearance: ", data: selectedMonster?.appearance, key: 4 },
-    { category: "Size: ", data: selectedMonster?.size, key: 5 },
-    { category: "Stats: ", data: selectedMonster?.statistics, key: 6 },
-    { category: "Abilities: ", data: selectedMonster?.abilities, key: 7 },
-    { category: "Description: ", data: selectedMonster?.description, key: 8 },
-    { category: "Known Habitat: ", data: selectedMonster?.habitat, key: 9 },
-    { category: "Notes: ", data: selectedMonster?.notes, key: 10 },
-  ]);
+  if (!dataIsLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchData}
+        onFinish={finishHandler}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   return (
-    <View style={styles.screen}>
-      <FlatList data={monsterData} renderItem={renderData} />
-    </View>
-  );
-};
+    <ScrollView>
+      <View style={styles.screen}>
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Name: </BoldText>
+          <DefaultText style={styles.info}>{monster.name}</DefaultText>
+        </View>
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Species: </BoldText>
+          <DefaultText style={styles.info}>{monster.species}</DefaultText>
+        </View>
 
-MonsterDetailsScreen.navigationOptions = (navigationData: any) => {
-  const Monsters = require("../data/monster-data.json");
-  const monsterId = navigationData.navigation.getParam("monsterId");
-  const selectedMonster = Monsters.find(
-    (monster: any) => monster.id === monsterId
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Color: </BoldText>
+          <DefaultText style={styles.info}>{monster.color}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Appearance: </BoldText>
+          <DefaultText style={styles.info}>{monster.appearance}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Size: </BoldText>
+          <DefaultText style={styles.info}>{monster.size}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Stats: </BoldText>
+          <DefaultText style={styles.info}>{monster.statistics}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Abilities: </BoldText>
+          <DefaultText style={styles.info}>{monster.abilities}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Description: </BoldText>
+          <DefaultText style={styles.info}>{monster.description}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Known Habitat: </BoldText>
+          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Notes: </BoldText>
+          <DefaultText style={styles.info}>{monster.notes}</DefaultText>
+        </View>
+      </View>
+    </ScrollView>
   );
-  return {
-    headerTitle: selectedMonster?.name,
-  };
 };
 
 const styles = StyleSheet.create({
   screen: {
+    alignItems: "center",
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 25,
   },
-  dataItem: {
-    alignItems: "center",
-    marginVertical: 15,
-  },
-  ability: {},
-  category: {
+  title: {
     fontSize: 30,
   },
-  data: {},
+  infoBlockContainer: {
+    alignItems: "center",
+    marginVertical: 15,
+    marginHorizontal: 30,
+  },
+  info: {
+    fontSize: 22,
+  },
 });
 
 export default MonsterDetailsScreen;
