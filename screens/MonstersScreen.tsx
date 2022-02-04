@@ -53,6 +53,10 @@ const MonstersScreen = (props: any) => {
 
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
+  const renderSeparator = () => {
+    return <View style={styles.separator} />;
+  };
+
   useEffect(() => {
     dataManipulation.storeLoadedData();
   }, [dataManipulation, filteredMonsters]);
@@ -85,6 +89,7 @@ const MonstersScreen = (props: any) => {
           renderItem={renderGridItem}
           numColumns={1}
           extraData={filteredMonsters}
+          ItemSeparatorComponent={renderSeparator}
         />
       </View>
     </View>
@@ -128,6 +133,12 @@ const styles = StyleSheet.create({
   },
   list: {
     width: "80%",
+    alignSelf: "center",
+  },
+  separator: {
+    height: 1,
+    width: "90%",
+    backgroundColor: "#CED0CE",
     alignSelf: "center",
   },
 });
