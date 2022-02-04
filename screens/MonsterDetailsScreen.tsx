@@ -4,6 +4,8 @@ import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../components/HeaderButton";
 
 const MonsterDetailsScreen = (props: any) => {
   const dataManipulation = new DataManipulation();
@@ -106,8 +108,26 @@ const MonsterDetailsScreen = (props: any) => {
 
 MonsterDetailsScreen.navigationOptions = (navigationData: any) => {
   const name = navigationData.navigation.getParam("monsterName");
+  const id = navigationData.navigation.getParam("monsterId");
   return {
     headerTitle: name,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Edit"
+          iconName="create"
+          onPress={() => {
+            navigationData.navigation.navigate({
+              routeName: "Edit",
+              params: {
+                monsterId: id,
+                monsterName: name,
+              },
+            });
+          }}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 
@@ -126,6 +146,8 @@ const styles = StyleSheet.create({
   },
   info: {
     fontSize: 22,
+    paddingRight: 2,
+    textAlign: "center",
   },
 });
 

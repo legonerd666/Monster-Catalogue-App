@@ -7,7 +7,7 @@ const DefaultText = (props: any) => {
       numberOfLines={props.numberOfLines}
       style={{ ...styles.text, ...props.style }}
     >
-      {props.children}
+      {props.children + " "}
     </Text>
   );
 };

@@ -7,6 +7,7 @@ import MonsterDetailsScreen from "../screens/MonsterDetailsScreen";
 import MonstersScreen from "../screens/MonstersScreen";
 import Colors from "../constants/Colors";
 import AddEntryScreen from "../screens/AddEntryScreen";
+import EditMonsterScreen from "../screens/EditMonsterScreen";
 
 const MonsterNavigator = createStackNavigator(
   {
@@ -30,6 +31,9 @@ const MonsterNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: "Add New Entry",
       },
+    },
+    Edit: {
+      screen: EditMonsterScreen,
     },
   },
   {
