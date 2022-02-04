@@ -4,7 +4,6 @@ import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MonsterDetailsScreen = (props: any) => {
   const dataManipulation = new DataManipulation();
