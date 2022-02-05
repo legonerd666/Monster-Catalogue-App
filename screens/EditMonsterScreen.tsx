@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, ScrollView, Button, StyleSheet } from "react-native";
+import { View, TextInput, ScrollView, Alert, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import Colors from "../constants/Colors";
@@ -8,6 +8,7 @@ import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import ColorPicker from "react-native-wheel-color-picker";
+import MonstersScreen from "./MonstersScreen";
 
 const EditMonsterScreen = (props: any) => {
   const fetchData = () => {
@@ -76,11 +77,42 @@ const EditMonsterScreen = (props: any) => {
       bgcolor: bgcolor,
     };
 
-    newMonsters[monster.id - 1] = editedMonster;
+    const monsterToReplaceIndex = newMonsters.findIndex(
+      (monsterById) => monsterById.id === monsterId
+    );
+    newMonsters[monsterToReplaceIndex] = editedMonster;
     dataManipulation.setData(newMonsters);
     dataManipulation.saveData();
     alert("Saved");
     props.navigation.popToTop();
+  };
+
+  const deleteHandler = () => {
+    Alert.alert(
+      "Delete Entry?",
+      "Are you sure you want to delete this entry?\nIt will be permanently deleted from your monsters.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: () => {
+            const newMonsters = dataManipulation.getData();
+            const monsterToDeleteIndex = newMonsters.findIndex(
+              (monsterById) => monsterById.id === monsterId
+            );
+            newMonsters.splice(monsterToDeleteIndex, 1);
+            dataManipulation.setData(newMonsters);
+            dataManipulation.saveData();
+            alert("Entry Deleted");
+            props.navigation.popToTop();
+          },
+        },
+      ]
+    );
   };
 
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
@@ -102,6 +134,7 @@ const EditMonsterScreen = (props: any) => {
   ]);
 
   useEffect(() => {
+    props.navigation.setParams({ delete: () => deleteHandler() });
     setName(monster.name);
     setSpecies(monster.species);
     setColor(monster.color);
@@ -262,6 +295,13 @@ EditMonsterScreen.navigationOptions = (navigationData: any) => {
           iconName="save-sharp"
           onPress={() => {
             navigationData.navigation.getParam("save")();
+          }}
+        />
+        <Item
+          title="Delete"
+          iconName="trash"
+          onPress={() => {
+            navigationData.navigation.getParam("delete")();
           }}
         />
       </HeaderButtons>
