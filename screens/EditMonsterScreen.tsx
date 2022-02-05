@@ -33,7 +33,7 @@ const EditMonsterScreen = (props: any) => {
   const [picture, setPicture] = useState("N/A");
 
   const [monster, setMonster] = useState({
-    id: -1,
+    id: "-1",
     name: "Failed to read",
     species: "Failed to read",
     color: "Failed to read",
@@ -59,32 +59,47 @@ const EditMonsterScreen = (props: any) => {
   };
 
   const saveHandler = () => {
-    const newMonsters = dataManipulation.getData();
+    Alert.alert(
+      "Save Edits?",
+      "Are you sure you want to save your edited entry?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            const newMonsters = dataManipulation.getData();
 
-    const editedMonster = {
-      id: monster.id,
-      name: name,
-      species: species,
-      color: color,
-      appearance: appearance,
-      size: size,
-      statistics: statistics,
-      abilities: abilities,
-      description: description,
-      habitat: habitat,
-      notes: notes,
-      picture: picture,
-      bgcolor: bgcolor,
-    };
+            const editedMonster = {
+              id: monster.id,
+              name: name,
+              species: species,
+              color: color,
+              appearance: appearance,
+              size: size,
+              statistics: statistics,
+              abilities: abilities,
+              description: description,
+              habitat: habitat,
+              notes: notes,
+              picture: picture,
+              bgcolor: bgcolor,
+            };
 
-    const monsterToReplaceIndex = newMonsters.findIndex(
-      (monsterById) => monsterById.id === monsterId
+            const monsterToReplaceIndex = newMonsters.findIndex(
+              (monsterById) => monsterById.id === monsterId
+            );
+            newMonsters[monsterToReplaceIndex] = editedMonster;
+            dataManipulation.setData(newMonsters);
+            dataManipulation.saveData();
+            props.navigation.popToTop();
+          },
+        },
+      ]
     );
-    newMonsters[monsterToReplaceIndex] = editedMonster;
-    dataManipulation.setData(newMonsters);
-    dataManipulation.saveData();
-    alert("Saved");
-    props.navigation.popToTop();
   };
 
   const deleteHandler = () => {
@@ -107,7 +122,6 @@ const EditMonsterScreen = (props: any) => {
             newMonsters.splice(monsterToDeleteIndex, 1);
             dataManipulation.setData(newMonsters);
             dataManipulation.saveData();
-            alert("Entry Deleted");
             props.navigation.popToTop();
           },
         },

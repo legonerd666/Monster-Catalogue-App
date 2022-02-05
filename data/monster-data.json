@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "8b3c4d87-b0a3-474c-9dea-fd2b063177b8",
     "name": "Empress Bethany Von Shwiez",
     "species": "Lizard",
     "color": "Turqoise",
@@ -15,7 +15,7 @@
     "bgcolor": "#00ffbb"
   },
   {
-    "id": 2,
+    "id": "801e97df-c5db-434a-9b8e-adb0b732ecb3",
     "name": "Weird Creature",
     "species": "Unknown",
     "color": "Greenish Gray",

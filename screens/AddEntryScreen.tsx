@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, ScrollView, Button, StyleSheet } from "react-native";
+import { View, TextInput, ScrollView, Alert, StyleSheet } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import Colors from "../constants/Colors";
@@ -8,6 +8,7 @@ import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import ColorPicker from "react-native-wheel-color-picker";
+import { v4 as uuid } from "uuid";
 
 const AddEntryScreen = (props: any) => {
   const fetchData = () => {
@@ -32,28 +33,43 @@ const AddEntryScreen = (props: any) => {
   const [picture, setPicture] = useState("N/A");
 
   const saveHandler = () => {
-    const newMonsters = dataManipulation.getData();
+    Alert.alert(
+      "Save New Entry?",
+      "Are you sure you want to save your new entry?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            const newMonsters = dataManipulation.getData();
 
-    const newMonster = {
-      id: newMonsters.length + 1,
-      name: name,
-      species: species,
-      color: color,
-      appearance: appearance,
-      size: size,
-      statistics: statistics,
-      abilities: abilities,
-      description: description,
-      habitat: habitat,
-      notes: notes,
-      picture: picture,
-      bgcolor: bgcolor,
-    };
-    newMonsters.push(newMonster);
-    dataManipulation.setData(newMonsters);
-    dataManipulation.saveData();
-    alert("Saved");
-    props.navigation.popToTop();
+            const newMonster = {
+              id: uuid(),
+              name: name,
+              species: species,
+              color: color,
+              appearance: appearance,
+              size: size,
+              statistics: statistics,
+              abilities: abilities,
+              description: description,
+              habitat: habitat,
+              notes: notes,
+              picture: picture,
+              bgcolor: bgcolor,
+            };
+            newMonsters.push(newMonster);
+            dataManipulation.setData(newMonsters);
+            dataManipulation.saveData();
+            props.navigation.popToTop();
+          },
+        },
+      ]
+    );
   };
 
   useEffect(() => {
