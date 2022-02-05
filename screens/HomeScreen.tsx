@@ -19,7 +19,7 @@ const HomeScreen = (props: any) => {
       <View style={styles.screen}>
         <DefaultText>Ithrell's Catalogue of Critters and Beasts </DefaultText>
         <DefaultText style={styles.notice}>(Tap to Open)</DefaultText>
-        <TouchableNativeFeedback onPress={dataManipulation.saveData}>
+        {/* <TouchableNativeFeedback onPress={dataManipulation.saveData}>
           <View style={styles.testBtn}>
             <DefaultText>Save Test Data</DefaultText>
           </View>
@@ -47,7 +47,7 @@ const HomeScreen = (props: any) => {
           <View style={styles.testBtn}>
             <DefaultText>Print Test Data</DefaultText>
           </View>
-        </TouchableNativeFeedback>
+        </TouchableNativeFeedback> */}
       </View>
     </TouchableNativeFeedback>
   );
