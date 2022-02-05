@@ -106,7 +106,7 @@ const AddEntryScreen = (props: any) => {
     <View>
       <ScrollView>
         <View style={styles.screen}>
-          <View>
+          <View style={styles.introContainer}>
             <BoldText style={styles.intro}>Enter New Creature Data: </BoldText>
           </View>
           <DefaultText>Name: </DefaultText>
@@ -139,16 +139,6 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Appearance: </DefaultText>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Enter Appearance..."
-              onChangeText={(text) => {
-                setAppearance(text);
-              }}
-              defaultValue=""
-            />
-          </View>
           <DefaultText>Size: </DefaultText>
           <View style={styles.inputContainer}>
             <TextInput
@@ -169,26 +159,6 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Abilities: </DefaultText>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Enter Abilities..."
-              onChangeText={(text) => {
-                setAbilities(text);
-              }}
-              defaultValue=""
-            />
-          </View>
-          <DefaultText>Description: </DefaultText>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Enter Description..."
-              onChangeText={(text) => {
-                setDescription(text);
-              }}
-              defaultValue=""
-            />
-          </View>
           <DefaultText>Known Habitat: </DefaultText>
           <View style={styles.inputContainer}>
             <TextInput
@@ -199,16 +169,52 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
+          <View style={styles.divider}></View>
+          <DefaultText>Abilities: </DefaultText>
+          <View style={styles.inputContainerLarge}>
+            <TextInput
+              placeholder="Enter Abilities..."
+              onChangeText={(text) => {
+                setAbilities(text);
+              }}
+              defaultValue=""
+              multiline={true}
+            />
+          </View>
+          <DefaultText>Appearance: </DefaultText>
+          <View style={styles.inputContainerLarge}>
+            <TextInput
+              placeholder="Enter Appearance..."
+              onChangeText={(text) => {
+                setAppearance(text);
+              }}
+              defaultValue=""
+              multiline={true}
+            />
+          </View>
+          <DefaultText>Description: </DefaultText>
+          <View style={styles.inputContainerLarge}>
+            <TextInput
+              placeholder="Enter Description..."
+              onChangeText={(text) => {
+                setDescription(text);
+              }}
+              defaultValue=""
+              multiline={true}
+            />
+          </View>
           <DefaultText>Notes: </DefaultText>
-          <View style={styles.inputContainer}>
+          <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Notes..."
               onChangeText={(text) => {
                 setNotes(text);
               }}
               defaultValue=""
+              multiline={true}
             />
           </View>
+          <View style={styles.divider}></View>
           <DefaultText>Background Color: </DefaultText>
           <View style={styles.colorPicker}>
             <ColorPicker
@@ -266,6 +272,26 @@ const styles = StyleSheet.create({
     height: 200,
     width: "70%",
     marginBottom: 100,
+  },
+  inputContainerLarge: {
+    backgroundColor: Colors.accentColor,
+    width: "70%",
+    height: 120,
+    justifyContent: "flex-start",
+    paddingLeft: 10,
+    marginVertical: 15,
+    padding: 5,
+  },
+  divider: {
+    height: 1,
+    width: "70%",
+    backgroundColor: "#CED0CE",
+    alignSelf: "center",
+    marginBottom: 40,
+    marginTop: 30,
+  },
+  introContainer: {
+    marginBottom: 20,
   },
 });
 

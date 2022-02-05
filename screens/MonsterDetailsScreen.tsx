@@ -68,11 +68,6 @@ const MonsterDetailsScreen = (props: any) => {
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Appearance: </BoldText>
-          <DefaultText style={styles.info}>{monster.appearance}</DefaultText>
-        </View>
-
-        <View style={styles.infoBlockContainer}>
           <BoldText style={styles.title}>Size: </BoldText>
           <DefaultText style={styles.info}>{monster.size}</DefaultText>
         </View>
@@ -83,18 +78,23 @@ const MonsterDetailsScreen = (props: any) => {
         </View>
 
         <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Known Habitat: </BoldText>
+          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
+        </View>
+
+        <View style={styles.infoBlockContainer}>
           <BoldText style={styles.title}>Abilities: </BoldText>
           <DefaultText style={styles.info}>{monster.abilities}</DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Description: </BoldText>
-          <DefaultText style={styles.info}>{monster.description}</DefaultText>
+          <BoldText style={styles.title}>Appearance: </BoldText>
+          <DefaultText style={styles.info}>{monster.appearance}</DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Known Habitat: </BoldText>
-          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
+          <BoldText style={styles.title}>Description: </BoldText>
+          <DefaultText style={styles.info}>{monster.description}</DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
