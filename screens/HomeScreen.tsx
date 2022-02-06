@@ -19,11 +19,6 @@ const HomeScreen = (props: any) => {
       <View style={styles.screen}>
         <DefaultText>Ithrell's Catalogue of Critters and Beasts </DefaultText>
         <DefaultText style={styles.notice}>(Tap to Open)</DefaultText>
-        <TouchableNativeFeedback onPress={dataManipulation.resetData}>
-          <View style={styles.testBtn}>
-            <DefaultText>Reset Data</DefaultText>
-          </View>
-        </TouchableNativeFeedback>
       </View>
     </TouchableNativeFeedback>
   );
