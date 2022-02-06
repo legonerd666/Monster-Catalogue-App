@@ -20,6 +20,7 @@ const AddEntryScreen = (props: any) => {
   );
 
   const [name, setName] = useState("Unknown");
+  const [dangerLevel, setDangerLevel] = useState("Unknown");
   const [species, setSpecies] = useState("Unknown");
   const [color, setColor] = useState("Unknown");
   const [appearance, setAppearance] = useState("Unknown");
@@ -50,6 +51,7 @@ const AddEntryScreen = (props: any) => {
             const newMonster = {
               id: uuid(),
               name: name,
+              dangerLevel: dangerLevel,
               species: species,
               color: color,
               appearance: appearance,
@@ -76,6 +78,7 @@ const AddEntryScreen = (props: any) => {
     props.navigation.setParams({ save: () => saveHandler() });
   }, [
     name,
+    dangerLevel,
     species,
     color,
     appearance,
@@ -115,6 +118,16 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Name..."
               onChangeText={(text) => {
                 setName(text);
+              }}
+              defaultValue=""
+            />
+          </View>
+          <DefaultText>Danger Level: </DefaultText>
+          <View style={styles.inputContainer}>
+            <TextInput
+              placeholder="Enter Danger Level..."
+              onChangeText={(text) => {
+                setDangerLevel(text);
               }}
               defaultValue=""
             />

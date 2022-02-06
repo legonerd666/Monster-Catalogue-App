@@ -2,6 +2,7 @@
   {
     "id": "8b3c4d87-b0a3-474c-9dea-fd2b063177b8",
     "name": "Empress Bethany Von Shwiez",
+    "dangerLevel": "Unknown",
     "species": "Lizard",
     "color": "Turqoise",
     "appearance": "Small turquoise fire breathing lizard",
@@ -17,6 +18,7 @@
   {
     "id": "801e97df-c5db-434a-9b8e-adb0b732ecb3",
     "name": "Weird Creature",
+    "dangerLevel": "High/Indeterminate",
     "species": "Unknown",
     "color": "Greenish Gray",
     "appearance": "Sickly greenish gray skin, hunched, webbed hands and feet, long black spine-like hairs run along its spine and down its tail, long serpentine tongue, kinda flat nose, long sharp teeth and claws, gray lifeless unblinking eyes",

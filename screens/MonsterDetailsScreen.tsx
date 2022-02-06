@@ -18,6 +18,7 @@ const MonsterDetailsScreen = (props: any) => {
 
   const [monster, setMonster] = useState({
     name: "Failed to read",
+    dangerLevel: "Failed to read",
     species: "Failed to read",
     color: "Failed to read",
     appearance: "Failed to read",
@@ -57,6 +58,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText style={styles.title}>Name: </BoldText>
           <DefaultText style={styles.info}>{monster.name}</DefaultText>
         </View>
+
+        <View style={styles.infoBlockContainer}>
+          <BoldText style={styles.title}>Danger Level: </BoldText>
+          <DefaultText style={styles.info}>{monster.dangerLevel}</DefaultText>
+        </View>
+
         <View style={styles.infoBlockContainer}>
           <BoldText style={styles.title}>Species: </BoldText>
           <DefaultText style={styles.info}>{monster.species}</DefaultText>

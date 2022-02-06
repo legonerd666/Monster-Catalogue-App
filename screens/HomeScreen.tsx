@@ -19,35 +19,11 @@ const HomeScreen = (props: any) => {
       <View style={styles.screen}>
         <DefaultText>Ithrell's Catalogue of Critters and Beasts </DefaultText>
         <DefaultText style={styles.notice}>(Tap to Open)</DefaultText>
-        {/* <TouchableNativeFeedback onPress={dataManipulation.saveData}>
-          <View style={styles.testBtn}>
-            <DefaultText>Save Test Data</DefaultText>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={dataManipulation.storeLoadedData}>
-          <View style={styles.testBtn}>
-            <DefaultText>Load Test Data</DefaultText>
-          </View>
-        </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={dataManipulation.resetData}>
           <View style={styles.testBtn}>
-            <DefaultText>Reset Test Data</DefaultText>
+            <DefaultText>Reset Data</DefaultText>
           </View>
         </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={dataManipulation.clearData}>
-          <View style={styles.testBtn}>
-            <DefaultText>Clear Test Data</DefaultText>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
-          onPress={() => {
-            console.log(dataManipulation.getData());
-          }}
-        >
-          <View style={styles.testBtn}>
-            <DefaultText>Print Test Data</DefaultText>
-          </View>
-        </TouchableNativeFeedback> */}
       </View>
     </TouchableNativeFeedback>
   );

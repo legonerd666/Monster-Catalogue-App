@@ -8,7 +8,6 @@ import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import ColorPicker from "react-native-wheel-color-picker";
-import MonstersScreen from "./MonstersScreen";
 
 const EditMonsterScreen = (props: any) => {
   const fetchData = () => {
@@ -20,6 +19,7 @@ const EditMonsterScreen = (props: any) => {
   );
 
   const [name, setName] = useState("Unknown");
+  const [dangerLevel, setDangerLevel] = useState("Unknown");
   const [species, setSpecies] = useState("Unknown");
   const [color, setColor] = useState("Unknown");
   const [appearance, setAppearance] = useState("Unknown");
@@ -35,6 +35,7 @@ const EditMonsterScreen = (props: any) => {
   const [monster, setMonster] = useState({
     id: "-1",
     name: "Failed to read",
+    dangerLevel: "Failed to read",
     species: "Failed to read",
     color: "Failed to read",
     appearance: "Failed to read",
@@ -76,6 +77,7 @@ const EditMonsterScreen = (props: any) => {
             const editedMonster = {
               id: monster.id,
               name: name,
+              dangerLevel: dangerLevel,
               species: species,
               color: color,
               appearance: appearance,
@@ -135,6 +137,7 @@ const EditMonsterScreen = (props: any) => {
     props.navigation.setParams({ save: () => saveHandler() });
   }, [
     name,
+    dangerLevel,
     species,
     color,
     appearance,
@@ -150,6 +153,7 @@ const EditMonsterScreen = (props: any) => {
   useEffect(() => {
     props.navigation.setParams({ delete: () => deleteHandler() });
     setName(monster.name);
+    setDangerLevel(monster.dangerLevel);
     setSpecies(monster.species);
     setColor(monster.color);
     setAppearance(monster.appearance);
@@ -187,6 +191,16 @@ const EditMonsterScreen = (props: any) => {
                 setName(text);
               }}
               defaultValue={monster.name}
+            />
+          </View>
+          <DefaultText>Danger Level: </DefaultText>
+          <View style={styles.inputContainer}>
+            <TextInput
+              placeholder="Enter Danger Level..."
+              onChangeText={(text) => {
+                setDangerLevel(text);
+              }}
+              defaultValue={monster.dangerLevel}
             />
           </View>
           <DefaultText>Species: </DefaultText>
