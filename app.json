@@ -2,7 +2,7 @@
   "expo": {
     "name": "Ithrell's Catalogue of Critters and Beasts",
     "slug": "monster-catalogue",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": [],
       "package": "com.legonerd666.monstercatalogue"
     },
