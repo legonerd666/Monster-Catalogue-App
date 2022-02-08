@@ -13,15 +13,16 @@ class dataManipulation {
   private loadData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("LocalMonsterData");
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
+      if (jsonValue != null) {
+        return JSON.parse(jsonValue);
+      } else {
+        this.setData([]);
+        this.saveData();
+        return this.loadData;
+      }
     } catch (e) {
       alert(e);
     }
-  };
-
-  resetData = async () => {
-    this.data = require("../data/monster-data.json");
-    this.saveData();
   };
 
   clearData = async () => {

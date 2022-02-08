@@ -64,7 +64,9 @@ const AddEntryScreen = (props: any) => {
               picture: picture,
               bgcolor: bgcolor,
             };
+
             newMonsters.push(newMonster);
+
             dataManipulation.setData(newMonsters);
             dataManipulation.saveData();
             props.navigation.popToTop();
