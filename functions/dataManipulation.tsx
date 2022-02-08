@@ -16,13 +16,17 @@ class dataManipulation {
       if (jsonValue != null) {
         return JSON.parse(jsonValue);
       } else {
-        this.setData([]);
-        this.saveData();
+        this.initializeSaveData();
         return this.loadData;
       }
     } catch (e) {
       alert(e);
     }
+  };
+
+  initializeSaveData = () => {
+    this.setData([]);
+    this.saveData();
   };
 
   clearData = async () => {

@@ -81,6 +81,7 @@ const MonstersScreen = (props: any) => {
           placeholder="Filter by Name..."
           onChangeText={Filter}
           defaultValue=""
+          placeholderTextColor={"black"}
         />
       </View>
       <View style={styles.list}>

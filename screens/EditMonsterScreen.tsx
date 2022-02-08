@@ -187,6 +187,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Name..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setName(text);
               }}
@@ -197,6 +198,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Danger Level..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setDangerLevel(text);
               }}
@@ -207,6 +209,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Species..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setSpecies(text);
               }}
@@ -217,6 +220,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Color..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setColor(text);
               }}
@@ -227,26 +231,18 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Size..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setSize(text);
               }}
               defaultValue={monster.size}
             />
           </View>
-          <DefaultText>Stats: </DefaultText>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Enter Stats..."
-              onChangeText={(text) => {
-                setStatistics(text);
-              }}
-              defaultValue={monster.statistics}
-            />
-          </View>
           <DefaultText>Known Habitat: </DefaultText>
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Known Habitat..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setHabitat(text);
               }}
@@ -254,10 +250,23 @@ const EditMonsterScreen = (props: any) => {
             />
           </View>
           <View style={styles.divider}></View>
+          <DefaultText>Stats: </DefaultText>
+          <View style={styles.inputContainerLarge}>
+            <TextInput
+              placeholder="Enter Stats..."
+              placeholderTextColor={"black"}
+              onChangeText={(text) => {
+                setStatistics(text);
+              }}
+              defaultValue={monster.statistics}
+              multiline={true}
+            />
+          </View>
           <DefaultText>Abilities: </DefaultText>
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Abilities..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setAbilities(text);
               }}
@@ -269,6 +278,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Appearance..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setAppearance(text);
               }}
@@ -280,6 +290,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Description..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setDescription(text);
               }}
@@ -291,6 +302,7 @@ const EditMonsterScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Notes..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setNotes(text);
               }}

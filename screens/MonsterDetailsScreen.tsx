@@ -80,13 +80,13 @@ const MonsterDetailsScreen = (props: any) => {
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Stats: </BoldText>
-          <DefaultText style={styles.info}>{monster.statistics}</DefaultText>
+          <BoldText style={styles.title}>Known Habitat: </BoldText>
+          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Known Habitat: </BoldText>
-          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
+          <BoldText style={styles.title}>Stats: </BoldText>
+          <DefaultText style={styles.info}>{monster.statistics}</DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>

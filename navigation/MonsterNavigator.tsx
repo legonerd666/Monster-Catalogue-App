@@ -37,7 +37,6 @@ const MonsterNavigator = createStackNavigator(
     },
   },
   {
-    //initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor:

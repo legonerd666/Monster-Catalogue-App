@@ -118,6 +118,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Name..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setName(text);
               }}
@@ -128,6 +129,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Danger Level..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setDangerLevel(text);
               }}
@@ -138,6 +140,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Species..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setSpecies(text);
               }}
@@ -148,6 +151,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Color..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setColor(text);
               }}
@@ -158,18 +162,9 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Size..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setSize(text);
-              }}
-              defaultValue=""
-            />
-          </View>
-          <DefaultText>Stats: </DefaultText>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Enter Stats..."
-              onChangeText={(text) => {
-                setStatistics(text);
               }}
               defaultValue=""
             />
@@ -178,6 +173,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainer}>
             <TextInput
               placeholder="Enter Known Habitat..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setHabitat(text);
               }}
@@ -185,10 +181,23 @@ const AddEntryScreen = (props: any) => {
             />
           </View>
           <View style={styles.divider}></View>
+          <DefaultText>Stats: </DefaultText>
+          <View style={styles.inputContainerLarge}>
+            <TextInput
+              placeholder="Enter Stats..."
+              placeholderTextColor={"black"}
+              onChangeText={(text) => {
+                setStatistics(text);
+              }}
+              defaultValue=""
+              multiline={true}
+            />
+          </View>
           <DefaultText>Abilities: </DefaultText>
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Abilities..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setAbilities(text);
               }}
@@ -200,6 +209,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Appearance..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setAppearance(text);
               }}
@@ -211,6 +221,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Description..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setDescription(text);
               }}
@@ -222,6 +233,7 @@ const AddEntryScreen = (props: any) => {
           <View style={styles.inputContainerLarge}>
             <TextInput
               placeholder="Enter Notes..."
+              placeholderTextColor={"black"}
               onChangeText={(text) => {
                 setNotes(text);
               }}
@@ -300,7 +312,7 @@ const styles = StyleSheet.create({
   divider: {
     height: 1,
     width: "70%",
-    backgroundColor: "#CED0CE",
+    backgroundColor: "#BDC0BD",
     alignSelf: "center",
     marginBottom: 40,
     marginTop: 30,
