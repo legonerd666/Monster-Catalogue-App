@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, TextInput, Button, StyleSheet } from "react-native";
+import {
+  View,
+  FlatList,
+  TextInput,
+  Button,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import MonsterGridTile from "../components/MonsterGridTile";
 import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
@@ -76,19 +83,30 @@ const MonstersScreen = (props: any) => {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.searchBarContainer}>
+      <View
+        style={
+          Dimensions.get("window").width > 600
+            ? styles.searchBarContainerLarge
+            : styles.searchBarContainer
+        }
+      >
         <TextInput
           placeholder="Filter by Name..."
           onChangeText={Filter}
           defaultValue=""
           placeholderTextColor={"black"}
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.largeTextInput
+              : styles.textInput
+          }
         />
       </View>
       <View style={styles.list}>
         <FlatList
           data={filteredMonsters}
           renderItem={renderGridItem}
-          numColumns={1}
+          numColumns={Dimensions.get("window").width > 600 ? 2 : 1}
           extraData={filteredMonsters}
           ItemSeparatorComponent={renderSeparator}
         />
@@ -121,6 +139,17 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 120,
   },
+  searchBarContainerLarge: {
+    height: 80,
+    borderRadius: 50,
+    width: "78%",
+    backgroundColor: "#ccc",
+    justifyContent: "center",
+    alignSelf: "center",
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    elevation: 5,
+  },
   searchBarContainer: {
     height: 50,
     borderRadius: 50,
@@ -142,6 +171,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#CED0CE",
     alignSelf: "center",
   },
+  largeTextInput: { fontSize: 25, marginLeft: 20 },
+  textInput: {},
 });
 
 export default MonstersScreen;

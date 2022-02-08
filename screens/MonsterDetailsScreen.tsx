@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, Dimensions } from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import DataManipulation from "../functions/DataManipulation";
@@ -55,58 +55,234 @@ const MonsterDetailsScreen = (props: any) => {
     <ScrollView>
       <View style={styles.screen}>
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Name: </BoldText>
-          <DefaultText style={styles.info}>{monster.name}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Name:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.name}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Danger Level: </BoldText>
-          <DefaultText style={styles.info}>{monster.dangerLevel}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Danger Level:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.dangerLevel}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Species: </BoldText>
-          <DefaultText style={styles.info}>{monster.species}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Species:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.species}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Color: </BoldText>
-          <DefaultText style={styles.info}>{monster.color}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Color:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.color}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Size: </BoldText>
-          <DefaultText style={styles.info}>{monster.size}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Size:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.size}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Known Habitat: </BoldText>
-          <DefaultText style={styles.info}>{monster.habitat}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Known Habitat:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.habitat}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Stats: </BoldText>
-          <DefaultText style={styles.info}>{monster.statistics}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Stats:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.statistics}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Abilities: </BoldText>
-          <DefaultText style={styles.info}>{monster.abilities}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Abilities:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.abilities}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Appearance: </BoldText>
-          <DefaultText style={styles.info}>{monster.appearance}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Appearance:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.appearance}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Description: </BoldText>
-          <DefaultText style={styles.info}>{monster.description}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Description:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.description}
+          </DefaultText>
         </View>
 
         <View style={styles.infoBlockContainer}>
-          <BoldText style={styles.title}>Notes: </BoldText>
-          <DefaultText style={styles.info}>{monster.notes}</DefaultText>
+          <BoldText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTitle
+                : styles.title
+            }
+          >
+            Notes:
+          </BoldText>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeInfo
+                : styles.info
+            }
+          >
+            {monster.notes}
+          </DefaultText>
         </View>
       </View>
     </ScrollView>
@@ -143,6 +319,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
+  largeTitle: {
+    fontSize: 50,
+  },
   title: {
     fontSize: 30,
   },
@@ -150,6 +329,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 15,
     marginHorizontal: 30,
+  },
+  largeInfo: {
+    fontSize: 35,
+    paddingRight: 2,
+    textAlign: "center",
+    marginVertical: 10,
   },
   info: {
     fontSize: 22,

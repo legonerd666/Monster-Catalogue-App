@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, ScrollView, Alert, StyleSheet } from "react-native";
+import {
+  View,
+  TextInput,
+  ScrollView,
+  Alert,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import DefaultText from "../components/DefaultText";
 import BoldText from "../components/BoldText";
 import Colors from "../constants/Colors";
@@ -112,11 +119,38 @@ const AddEntryScreen = (props: any) => {
       <ScrollView>
         <View style={styles.screen}>
           <View style={styles.introContainer}>
-            <BoldText style={styles.intro}>Enter New Creature Data: </BoldText>
+            <BoldText
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.introLarge
+                  : styles.intro
+              }
+            >
+              Enter New Creature Data:
+            </BoldText>
           </View>
-          <DefaultText>Name: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Name:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Name..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -125,9 +159,28 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Danger Level: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Danger Level:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Danger Level..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -136,9 +189,28 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Species: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Species:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Species..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -147,9 +219,28 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Color: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Color:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Color..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -158,9 +249,28 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Size: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Size:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Size..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -169,9 +279,28 @@ const AddEntryScreen = (props: any) => {
               defaultValue=""
             />
           </View>
-          <DefaultText>Known Habitat: </DefaultText>
-          <View style={styles.inputContainer}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Known Habitat:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerLarge
+                : styles.inputContainer
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Known Habitat..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -181,9 +310,28 @@ const AddEntryScreen = (props: any) => {
             />
           </View>
           <View style={styles.divider}></View>
-          <DefaultText>Stats: </DefaultText>
-          <View style={styles.inputContainerLarge}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Stats:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerMultilineLarge
+                : styles.inputContainerMultiline
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Stats..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -193,9 +341,28 @@ const AddEntryScreen = (props: any) => {
               multiline={true}
             />
           </View>
-          <DefaultText>Abilities: </DefaultText>
-          <View style={styles.inputContainerLarge}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Abilities:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerMultilineLarge
+                : styles.inputContainerMultiline
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Abilities..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -205,9 +372,28 @@ const AddEntryScreen = (props: any) => {
               multiline={true}
             />
           </View>
-          <DefaultText>Appearance: </DefaultText>
-          <View style={styles.inputContainerLarge}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Appearance:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerMultilineLarge
+                : styles.inputContainerMultiline
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Appearance..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -217,9 +403,28 @@ const AddEntryScreen = (props: any) => {
               multiline={true}
             />
           </View>
-          <DefaultText>Description: </DefaultText>
-          <View style={styles.inputContainerLarge}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Description:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerMultilineLarge
+                : styles.inputContainerMultiline
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Description..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -229,9 +434,28 @@ const AddEntryScreen = (props: any) => {
               multiline={true}
             />
           </View>
-          <DefaultText>Notes: </DefaultText>
-          <View style={styles.inputContainerLarge}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Notes:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.inputContainerMultilineLarge
+                : styles.inputContainerMultiline
+            }
+          >
             <TextInput
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.inputTextLarge
+                  : styles.inputText
+              }
               placeholder="Enter Notes..."
               placeholderTextColor={"black"}
               onChangeText={(text) => {
@@ -242,8 +466,22 @@ const AddEntryScreen = (props: any) => {
             />
           </View>
           <View style={styles.divider}></View>
-          <DefaultText>Background Color: </DefaultText>
-          <View style={styles.colorPicker}>
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.titleLarge
+                : styles.title
+            }
+          >
+            Background Color:
+          </DefaultText>
+          <View
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.colorPickerLarge
+                : styles.colorPicker
+            }
+          >
             <ColorPicker
               onColorChangeComplete={(color) => {
                 setBgcolor(color);
@@ -284,13 +522,21 @@ const styles = StyleSheet.create({
   intro: {
     fontSize: 30,
   },
-  notice: {
-    fontSize: 15,
+  introLarge: {
+    fontSize: 55,
   },
   inputContainer: {
     backgroundColor: Colors.accentColor,
     width: "70%",
-    height: 40,
+    height: 50,
+    justifyContent: "center",
+    paddingLeft: 10,
+    marginVertical: 15,
+  },
+  inputContainerLarge: {
+    backgroundColor: Colors.accentColor,
+    width: "70%",
+    height: 70,
     justifyContent: "center",
     paddingLeft: 10,
     marginVertical: 15,
@@ -300,10 +546,24 @@ const styles = StyleSheet.create({
     width: "70%",
     marginBottom: 100,
   },
-  inputContainerLarge: {
+  colorPickerLarge: {
+    height: 200,
+    width: "40%",
+    marginBottom: 100,
+  },
+  inputContainerMultiline: {
     backgroundColor: Colors.accentColor,
     width: "70%",
     height: 120,
+    justifyContent: "flex-start",
+    paddingLeft: 10,
+    marginVertical: 15,
+    padding: 5,
+  },
+  inputContainerMultilineLarge: {
+    backgroundColor: Colors.accentColor,
+    width: "70%",
+    height: 200,
     justifyContent: "flex-start",
     paddingLeft: 10,
     marginVertical: 15,
@@ -319,6 +579,12 @@ const styles = StyleSheet.create({
   },
   introContainer: {
     marginBottom: 20,
+  },
+  title: {},
+  titleLarge: { fontSize: 50 },
+  inputText: { fontSize: 16 },
+  inputTextLarge: {
+    fontSize: 25,
   },
 });
 

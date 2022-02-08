@@ -1,5 +1,10 @@
 import React from "react";
-import { View, TouchableNativeFeedback, StyleSheet } from "react-native";
+import {
+  View,
+  TouchableNativeFeedback,
+  Dimensions,
+  StyleSheet,
+} from "react-native";
 import DefaultText from "../components/DefaultText";
 
 const HomeScreen = (props: any) => {
@@ -12,8 +17,24 @@ const HomeScreen = (props: any) => {
       }}
     >
       <View style={styles.screen}>
-        <DefaultText>Ithrell's Catalogue of Critters and Beasts </DefaultText>
-        <DefaultText style={styles.notice}>(Tap to Open)</DefaultText>
+        <DefaultText
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.largeIntro
+              : styles.intro
+          }
+        >
+          Ithrell's Catalogue of Critters and Beasts{" "}
+        </DefaultText>
+        <DefaultText
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.largeNotice
+              : styles.notice
+          }
+        >
+          (Tap to Open)
+        </DefaultText>
       </View>
     </TouchableNativeFeedback>
   );
@@ -25,13 +46,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  largeNotice: {
+    fontSize: 30,
+  },
   notice: {
     fontSize: 10,
   },
-  testBtn: {
-    backgroundColor: "#aaa",
-    marginVertical: 5,
-  },
+  largeIntro: { fontSize: 50 },
+  intro: {},
 });
 
 export default HomeScreen;

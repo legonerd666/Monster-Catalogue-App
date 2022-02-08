@@ -48,6 +48,7 @@ const MonsterNavigator = createStackNavigator(
         fontFamily: "caveat-bold",
         fontSize: 30,
         marginRight: 30,
+        textAlign: "center",
       },
     },
   }
