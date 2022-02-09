@@ -1,4 +1,5 @@
 export default {
-  primaryColor: "#000",
-  accentColor: "#fff",
+  primaryColor: "#fff",
+  accentColor: "#10101f",
+  textBoxColor: "#242424",
 };

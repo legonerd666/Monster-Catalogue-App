@@ -13,6 +13,7 @@ import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
+import Colors from "../constants/Colors";
 
 const MonstersScreen = (props: any) => {
   const fetchData = () => {
@@ -150,7 +151,7 @@ const MonstersScreen = (props: any) => {
               Filter(text);
             }}
             defaultValue={filterText}
-            placeholderTextColor={"black"}
+            placeholderTextColor={Colors.primaryColor}
             style={
               Dimensions.get("window").width > 600
                 ? styles.largeTextInput
@@ -221,7 +222,7 @@ const MonstersScreen = (props: any) => {
             Filter(text);
           }}
           defaultValue={filterText}
-          placeholderTextColor={"black"}
+          placeholderTextColor={Colors.primaryColor}
           style={
             Dimensions.get("window").width > 600
               ? styles.largeTextInput
@@ -265,12 +266,13 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     paddingBottom: 120,
+    backgroundColor: Colors.accentColor,
   },
   searchBarContainerLarge: {
     height: 80,
     borderRadius: 50,
     width: "78%",
-    backgroundColor: "#ccc",
+    backgroundColor: Colors.textBoxColor,
     justifyContent: "center",
     alignSelf: "center",
     paddingHorizontal: 10,
@@ -281,7 +283,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     width: "73%",
-    backgroundColor: "#ccc",
+    backgroundColor: Colors.textBoxColor,
     justifyContent: "center",
     alignSelf: "center",
     paddingHorizontal: 10,
@@ -295,11 +297,17 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     width: "90%",
-    backgroundColor: "#CED0CE",
+    backgroundColor: Colors.primaryColor,
     alignSelf: "center",
   },
-  largeTextInput: { fontSize: 25, marginLeft: 20 },
-  textInput: {},
+  largeTextInput: {
+    fontSize: 25,
+    marginLeft: 20,
+    color: Colors.primaryColor,
+  },
+  textInput: {
+    color: Colors.primaryColor,
+  },
   noticeLarge: {
     textAlign: "center",
     fontSize: 40,

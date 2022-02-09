@@ -152,7 +152,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Name..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setName(text);
               }}
@@ -182,7 +182,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Danger Level..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setDangerLevel(text);
               }}
@@ -212,7 +212,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Species..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setSpecies(text);
               }}
@@ -242,7 +242,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Color..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setColor(text);
               }}
@@ -272,7 +272,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Size..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setSize(text);
               }}
@@ -302,7 +302,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Known Habitat..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setHabitat(text);
               }}
@@ -333,7 +333,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Stats..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setStatistics(text);
               }}
@@ -364,7 +364,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Abilities..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setAbilities(text);
               }}
@@ -395,7 +395,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Appearance..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setAppearance(text);
               }}
@@ -426,7 +426,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Description..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setDescription(text);
               }}
@@ -457,7 +457,7 @@ const AddEntryScreen = (props: any) => {
                   : styles.inputText
               }
               placeholder="Enter Notes..."
-              placeholderTextColor={"black"}
+              placeholderTextColor={Colors.primaryColor}
               onChangeText={(text) => {
                 setNotes(text);
               }}
@@ -518,6 +518,7 @@ const styles = StyleSheet.create({
   screen: {
     alignItems: "center",
     flex: 1,
+    backgroundColor: Colors.accentColor,
   },
   intro: {
     fontSize: 30,
@@ -526,20 +527,22 @@ const styles = StyleSheet.create({
     fontSize: 55,
   },
   inputContainer: {
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.textBoxColor,
     width: "70%",
     height: 50,
     justifyContent: "center",
     paddingLeft: 10,
     marginVertical: 15,
+    borderRadius: 20,
   },
   inputContainerLarge: {
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.textBoxColor,
     width: "70%",
     height: 70,
     justifyContent: "center",
     paddingLeft: 10,
     marginVertical: 15,
+    borderRadius: 20,
   },
   colorPicker: {
     height: 200,
@@ -552,22 +555,26 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   inputContainerMultiline: {
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.textBoxColor,
     width: "70%",
     height: 120,
     justifyContent: "flex-start",
     paddingLeft: 10,
     marginVertical: 15,
-    padding: 5,
+    padding: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
   },
   inputContainerMultilineLarge: {
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.textBoxColor,
     width: "70%",
     height: 200,
     justifyContent: "flex-start",
     paddingLeft: 10,
     marginVertical: 15,
-    padding: 5,
+    padding: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
   },
   divider: {
     height: 1,
@@ -581,10 +588,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {},
-  titleLarge: { fontSize: 50 },
-  inputText: { fontSize: 16 },
+  titleLarge: {
+    fontSize: 50,
+  },
+  inputText: {
+    fontSize: 16,
+    color: Colors.primaryColor,
+  },
   inputTextLarge: {
     fontSize: 25,
+    color: Colors.primaryColor,
   },
 });
 

@@ -6,6 +6,7 @@ import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
+import Colors from "../constants/Colors";
 
 const MonsterDetailsScreen = (props: any) => {
   const dataManipulation = new DataManipulation();
@@ -318,6 +319,7 @@ const styles = StyleSheet.create({
   screen: {
     alignItems: "center",
     flex: 1,
+    backgroundColor: Colors.accentColor,
   },
   largeTitle: {
     fontSize: 50,

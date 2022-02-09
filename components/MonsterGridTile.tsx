@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableNativeFeedback } from "react-native";
+import Colors from "../constants/Colors";
 import DefaultText from "./DefaultText";
 
 const MonsterGridTile = (props: any) => {
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
+    color: Colors.accentColor,
   },
 });
 
