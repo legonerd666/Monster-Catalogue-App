@@ -61,6 +61,8 @@ const MonstersScreen = (props: any) => {
 
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
+  const [filterText, setFilterText] = useState("");
+
   const renderSeparator = () => {
     return <View style={styles.separator} />;
   };
@@ -85,25 +87,6 @@ const MonstersScreen = (props: any) => {
   if (dataManipulation.getData().length == 0) {
     return (
       <View style={styles.screen}>
-        <View
-          style={
-            Dimensions.get("window").width > 600
-              ? styles.searchBarContainerLarge
-              : styles.searchBarContainer
-          }
-        >
-          <TextInput
-            placeholder="Filter by Name..."
-            onChangeText={Filter}
-            defaultValue=""
-            placeholderTextColor={"black"}
-            style={
-              Dimensions.get("window").width > 600
-                ? styles.largeTextInput
-                : styles.textInput
-            }
-          />
-        </View>
         <View
           style={
             Dimensions.get("window").width > 600
@@ -150,6 +133,78 @@ const MonstersScreen = (props: any) => {
     );
   }
 
+  if (filteredMonsters.length == 0) {
+    return (
+      <View style={styles.screen}>
+        <View
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.searchBarContainerLarge
+              : styles.searchBarContainer
+          }
+        >
+          <TextInput
+            placeholder="Filter by Name..."
+            onChangeText={(text) => {
+              setFilterText(text);
+              Filter(text);
+            }}
+            defaultValue={filterText}
+            placeholderTextColor={"black"}
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTextInput
+                : styles.textInput
+            }
+          />
+        </View>
+        <View
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.noticeContainerLarge
+              : styles.noticeContainer
+          }
+        >
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.noticeLarge
+                : styles.notice
+            }
+          >
+            You don't seem to have any monsters that match your search, how
+            about making a new entry or checking your search for typos?
+          </DefaultText>
+          <TouchableNativeFeedback
+            onPress={() => {
+              props.navigation.navigate({
+                routeName: "AddEntry",
+              });
+            }}
+          >
+            <View
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.addButtonContainerLarge
+                  : styles.addButtonContainer
+              }
+            >
+              <DefaultText
+                style={
+                  Dimensions.get("window").width > 600
+                    ? styles.addButtonTextLarge
+                    : styles.addButtonText
+                }
+              >
+                Add New
+              </DefaultText>
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.screen}>
       <View
@@ -161,8 +216,11 @@ const MonstersScreen = (props: any) => {
       >
         <TextInput
           placeholder="Filter by Name..."
-          onChangeText={Filter}
-          defaultValue=""
+          onChangeText={(text) => {
+            setFilterText(text);
+            Filter(text);
+          }}
+          defaultValue={filterText}
           placeholderTextColor={"black"}
           style={
             Dimensions.get("window").width > 600
