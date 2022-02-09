@@ -3,7 +3,7 @@ import {
   View,
   FlatList,
   TextInput,
-  Button,
+  TouchableNativeFeedback,
   StyleSheet,
   Dimensions,
 } from "react-native";
@@ -12,6 +12,7 @@ import DataManipulation from "../functions/DataManipulation";
 import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
+import DefaultText from "../components/DefaultText";
 
 const MonstersScreen = (props: any) => {
   const fetchData = () => {
@@ -78,6 +79,74 @@ const MonstersScreen = (props: any) => {
         }}
         onError={(err) => console.log(err)}
       />
+    );
+  }
+
+  if (dataManipulation.getData().length == 0) {
+    return (
+      <View style={styles.screen}>
+        <View
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.searchBarContainerLarge
+              : styles.searchBarContainer
+          }
+        >
+          <TextInput
+            placeholder="Filter by Name..."
+            onChangeText={Filter}
+            defaultValue=""
+            placeholderTextColor={"black"}
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.largeTextInput
+                : styles.textInput
+            }
+          />
+        </View>
+        <View
+          style={
+            Dimensions.get("window").width > 600
+              ? styles.noticeContainerLarge
+              : styles.noticeContainer
+          }
+        >
+          <DefaultText
+            style={
+              Dimensions.get("window").width > 600
+                ? styles.noticeLarge
+                : styles.notice
+            }
+          >
+            You don't seem to have any monsters, how about making a new entry?
+          </DefaultText>
+          <TouchableNativeFeedback
+            onPress={() => {
+              props.navigation.navigate({
+                routeName: "AddEntry",
+              });
+            }}
+          >
+            <View
+              style={
+                Dimensions.get("window").width > 600
+                  ? styles.addButtonContainerLarge
+                  : styles.addButtonContainer
+              }
+            >
+              <DefaultText
+                style={
+                  Dimensions.get("window").width > 600
+                    ? styles.addButtonTextLarge
+                    : styles.addButtonText
+                }
+              >
+                Add New
+              </DefaultText>
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+      </View>
     );
   }
 
@@ -173,6 +242,44 @@ const styles = StyleSheet.create({
   },
   largeTextInput: { fontSize: 25, marginLeft: 20 },
   textInput: {},
+  noticeLarge: {
+    textAlign: "center",
+    fontSize: 40,
+  },
+  notice: {
+    textAlign: "center",
+  },
+  noticeContainerLarge: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    marginHorizontal: 200,
+  },
+  noticeContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    marginHorizontal: 50,
+  },
+  addButtonContainerLarge: {
+    backgroundColor: "#107aeb",
+    borderRadius: 10,
+    elevation: 3,
+    padding: 5,
+    marginTop: 10,
+  },
+  addButtonContainer: {
+    backgroundColor: "#107aeb",
+    borderRadius: 10,
+    elevation: 3,
+    padding: 5,
+    marginTop: 10,
+    overflow: "hidden",
+  },
+  addButtonTextLarge: {
+    fontSize: 40,
+  },
+  addButtonText: {},
 });
 
 export default MonstersScreen;
