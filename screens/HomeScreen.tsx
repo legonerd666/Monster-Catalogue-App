@@ -27,7 +27,7 @@ const HomeScreen = (props: any) => {
               : styles.intro
           }
         >
-          Ithrell's Catalogue of Critters and Beasts{" "}
+          Ithrell's Catalogue of Critters and Beasts
         </DefaultText>
         <DefaultText
           style={
