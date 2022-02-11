@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "caveat",
     fontSize: 20,
-    color: Colors.primaryColor,
+    color: Colors.primaryColorDarkMode,
   },
 });
 

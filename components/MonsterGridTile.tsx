@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
-    color: Colors.accentColor,
+    color: Colors.accentColorDarkMode,
   },
 });
 

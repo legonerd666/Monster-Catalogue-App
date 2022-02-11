@@ -14,6 +14,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
+import { RootStateOrAny, useSelector } from "react-redux";
 
 const MonstersScreen = (props: any) => {
   const fetchData = () => {
@@ -44,17 +45,21 @@ const MonstersScreen = (props: any) => {
       return;
     }
     const tempMonsters: any[] = [];
+
     dataManipulation.getData().forEach((monster: any) => {
       if (monster.name.toLowerCase().includes(text.toLowerCase())) {
         tempMonsters.push(monster);
       }
     });
+
     setFilteredMonsters(tempMonsters);
   };
 
-  const [dataManipulation, setDataManipulation] = useState(
-    new DataManipulation()
-  );
+  const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+
+  const [isDarkMode, setIsDarkMode] = useState(mode === "dark" ? true : false);
+
+  const [dataManipulation] = useState(new DataManipulation());
 
   const [filteredMonsters, setFilteredMonsters] = useState(
     dataManipulation.getData
@@ -65,7 +70,13 @@ const MonstersScreen = (props: any) => {
   const [filterText, setFilterText] = useState("");
 
   const renderSeparator = () => {
-    return <View style={styles.separator} />;
+    return (
+      <View
+        style={
+          isDarkMode ? styles.separatorDarkMode : styles.separatorLightMode
+        }
+      />
+    );
   };
 
   useEffect(() => {
@@ -87,7 +98,7 @@ const MonstersScreen = (props: any) => {
 
   if (dataManipulation.getData().length == 0) {
     return (
-      <View style={styles.screen}>
+      <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
         <View
           style={
             Dimensions.get("window").width > 600
@@ -98,8 +109,12 @@ const MonstersScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.noticeLarge
-                : styles.notice
+                ? isDarkMode
+                  ? styles.noticeLargeDarkMode
+                  : styles.noticeLargeLightMode
+                : isDarkMode
+                ? styles.noticeDarkMode
+                : styles.noticeLightMode
             }
           >
             You don't seem to have any monsters, how about making a new entry?
@@ -136,12 +151,16 @@ const MonstersScreen = (props: any) => {
 
   if (filteredMonsters.length == 0) {
     return (
-      <View style={styles.screen}>
+      <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
         <View
           style={
             Dimensions.get("window").width > 600
-              ? styles.searchBarContainerLarge
-              : styles.searchBarContainer
+              ? isDarkMode
+                ? styles.searchBarContainerLargeDarkMode
+                : styles.searchBarContainerLargeLightMode
+              : isDarkMode
+              ? styles.searchBarContainerDarkMode
+              : styles.searchBarContainerLightMode
           }
         >
           <TextInput
@@ -151,11 +170,19 @@ const MonstersScreen = (props: any) => {
               Filter(text);
             }}
             defaultValue={filterText}
-            placeholderTextColor={Colors.primaryColor}
+            placeholderTextColor={
+              isDarkMode
+                ? Colors.primaryColorDarkMode
+                : Colors.primaryColorLightMode
+            }
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTextInput
-                : styles.textInput
+                ? isDarkMode
+                  ? styles.largeTextInputDarkMode
+                  : styles.largeTextInputLightMode
+                : isDarkMode
+                ? styles.textInputDarkMode
+                : styles.textInputLightMode
             }
           />
         </View>
@@ -169,8 +196,12 @@ const MonstersScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.noticeLarge
-                : styles.notice
+                ? isDarkMode
+                  ? styles.noticeLargeDarkMode
+                  : styles.noticeLargeLightMode
+                : isDarkMode
+                ? styles.noticeDarkMode
+                : styles.noticeLightMode
             }
           >
             You don't seem to have any monsters that match your search, how
@@ -207,12 +238,16 @@ const MonstersScreen = (props: any) => {
   }
 
   return (
-    <View style={styles.screen}>
+    <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
       <View
         style={
           Dimensions.get("window").width > 600
-            ? styles.searchBarContainerLarge
-            : styles.searchBarContainer
+            ? isDarkMode
+              ? styles.searchBarContainerLargeDarkMode
+              : styles.searchBarContainerLargeLightMode
+            : isDarkMode
+            ? styles.searchBarContainerDarkMode
+            : styles.searchBarContainerLightMode
         }
       >
         <TextInput
@@ -222,11 +257,19 @@ const MonstersScreen = (props: any) => {
             Filter(text);
           }}
           defaultValue={filterText}
-          placeholderTextColor={Colors.primaryColor}
+          placeholderTextColor={
+            isDarkMode
+              ? Colors.primaryColorDarkMode
+              : Colors.primaryColorLightMode
+          }
           style={
             Dimensions.get("window").width > 600
-              ? styles.largeTextInput
-              : styles.textInput
+              ? isDarkMode
+                ? styles.largeTextInputDarkMode
+                : styles.largeTextInputLightMode
+              : isDarkMode
+              ? styles.textInputDarkMode
+              : styles.textInputLightMode
           }
         />
       </View>
@@ -262,28 +305,56 @@ MonstersScreen.navigationOptions = (navigationData: any) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
+  screenDarkMode: {
     width: "100%",
     flex: 1,
     paddingBottom: 120,
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.accentColorDarkMode,
   },
-  searchBarContainerLarge: {
+  screenLightMode: {
+    width: "100%",
+    flex: 1,
+    paddingBottom: 120,
+    backgroundColor: Colors.accentColorLightMode,
+  },
+  searchBarContainerLargeDarkMode: {
     height: 80,
     borderRadius: 50,
     width: "78%",
-    backgroundColor: Colors.textBoxColor,
+    backgroundColor: Colors.textBoxColorDarkMode,
     justifyContent: "center",
     alignSelf: "center",
     paddingHorizontal: 10,
     marginVertical: 10,
     elevation: 5,
   },
-  searchBarContainer: {
+  searchBarContainerLargeLightMode: {
+    height: 80,
+    borderRadius: 50,
+    width: "78%",
+    backgroundColor: Colors.textBoxColorLightMode,
+    justifyContent: "center",
+    alignSelf: "center",
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    elevation: 5,
+  },
+  searchBarContainerDarkMode: {
     height: 50,
     borderRadius: 50,
     width: "73%",
-    backgroundColor: Colors.textBoxColor,
+    backgroundColor: Colors.textBoxColorDarkMode,
+    justifyContent: "center",
+    alignSelf: "center",
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    elevation: 5,
+  },
+  searchBarContainerLightMode: {
+    height: 50,
+    borderRadius: 50,
+    width: "73%",
+    backgroundColor: Colors.textBoxColorLightMode,
     justifyContent: "center",
     alignSelf: "center",
     paddingHorizontal: 10,
@@ -294,26 +365,51 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
   },
-  separator: {
+  separatorDarkMode: {
     height: 1,
     width: "90%",
-    backgroundColor: Colors.primaryColor,
+    backgroundColor: Colors.dividerColorDarkMode,
     alignSelf: "center",
   },
-  largeTextInput: {
+  separatorLightMode: {
+    height: 1,
+    width: "90%",
+    backgroundColor: Colors.dividerColorLightMode,
+    alignSelf: "center",
+  },
+  largeTextInputDarkMode: {
     fontSize: 25,
     marginLeft: 20,
-    color: Colors.primaryColor,
+    color: Colors.primaryColorDarkMode,
   },
-  textInput: {
-    color: Colors.primaryColor,
+  largeTextInputLightMode: {
+    fontSize: 25,
+    marginLeft: 20,
+    color: Colors.primaryColorLightMode,
   },
-  noticeLarge: {
+  textInputDarkMode: {
+    color: Colors.primaryColorDarkMode,
+  },
+  textInputLightMode: {
+    color: Colors.primaryColorLightMode,
+  },
+  noticeLargeDarkMode: {
     textAlign: "center",
     fontSize: 40,
+    color: Colors.primaryColorDarkMode,
   },
-  notice: {
+  noticeLargeLightMode: {
     textAlign: "center",
+    fontSize: 40,
+    color: Colors.primaryColorLightMode,
+  },
+  noticeDarkMode: {
+    textAlign: "center",
+    color: Colors.primaryColorDarkMode,
+  },
+  noticeLightMode: {
+    textAlign: "center",
+    color: Colors.primaryColorLightMode,
   },
   noticeContainerLarge: {
     justifyContent: "center",

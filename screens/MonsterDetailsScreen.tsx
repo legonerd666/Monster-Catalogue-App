@@ -7,8 +7,13 @@ import AppLoading from "expo-app-loading";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
+import { useSelector, RootStateOrAny } from "react-redux";
 
 const MonsterDetailsScreen = (props: any) => {
+  const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+
+  const [isDarkMode] = useState(mode === "dark" ? true : false);
+
   const dataManipulation = new DataManipulation();
 
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
@@ -54,13 +59,17 @@ const MonsterDetailsScreen = (props: any) => {
 
   return (
     <ScrollView>
-      <View style={styles.screen}>
+      <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
         <View style={styles.infoBlockContainer}>
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Name:
@@ -68,8 +77,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.name}
@@ -80,8 +93,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Danger Level:
@@ -89,8 +106,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.dangerLevel}
@@ -101,8 +122,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Species:
@@ -110,8 +135,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.species}
@@ -122,8 +151,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Color:
@@ -131,8 +164,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.color}
@@ -143,8 +180,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Size:
@@ -152,8 +193,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.size}
@@ -164,8 +209,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Known Habitat:
@@ -173,8 +222,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.habitat}
@@ -185,8 +238,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Stats:
@@ -194,8 +251,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.statistics}
@@ -206,8 +267,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Abilities:
@@ -215,8 +280,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.abilities}
@@ -227,8 +296,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Appearance:
@@ -236,8 +309,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.appearance}
@@ -248,8 +325,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Description:
@@ -257,8 +338,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.description}
@@ -269,8 +354,12 @@ const MonsterDetailsScreen = (props: any) => {
           <BoldText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeTitle
-                : styles.title
+                ? isDarkMode
+                  ? styles.largeTitleDarkMode
+                  : styles.largeTitleLightMode
+                : isDarkMode
+                ? styles.titleDarkMode
+                : styles.titleLightMode
             }
           >
             Notes:
@@ -278,8 +367,12 @@ const MonsterDetailsScreen = (props: any) => {
           <DefaultText
             style={
               Dimensions.get("window").width > 600
-                ? styles.largeInfo
-                : styles.info
+                ? isDarkMode
+                  ? styles.largeInfoDarkMode
+                  : styles.largeInfoLightMode
+                : isDarkMode
+                ? styles.infoDarkMode
+                : styles.infoLightMode
             }
           >
             {monster.notes}
@@ -316,15 +409,30 @@ MonsterDetailsScreen.navigationOptions = (navigationData: any) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
+  screenDarkMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.accentColorDarkMode,
   },
-  largeTitle: {
+  screenLightMode: {
+    alignItems: "center",
+    flex: 1,
+    backgroundColor: Colors.accentColorLightMode,
+  },
+  largeTitleDarkMode: {
+    color: Colors.primaryColorDarkMode,
     fontSize: 50,
   },
-  title: {
+  largeTitleLightMode: {
+    color: Colors.primaryColorLightMode,
+    fontSize: 50,
+  },
+  titleDarkMode: {
+    color: Colors.primaryColorDarkMode,
+    fontSize: 30,
+  },
+  titleLightMode: {
+    color: Colors.primaryColorLightMode,
     fontSize: 30,
   },
   infoBlockContainer: {
@@ -332,16 +440,31 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     marginHorizontal: 30,
   },
-  largeInfo: {
+  largeInfoDarkMode: {
     fontSize: 35,
     paddingRight: 2,
     textAlign: "center",
     marginVertical: 10,
+    color: Colors.primaryColorDarkMode,
   },
-  info: {
+  largeInfoLightMode: {
+    fontSize: 35,
+    paddingRight: 2,
+    textAlign: "center",
+    marginVertical: 10,
+    color: Colors.primaryColorLightMode,
+  },
+  infoDarkMode: {
     fontSize: 22,
     paddingRight: 2,
     textAlign: "center",
+    color: Colors.primaryColorDarkMode,
+  },
+  infoLightMode: {
+    fontSize: 22,
+    paddingRight: 2,
+    textAlign: "center",
+    color: Colors.primaryColorLightMode,
   },
 });
 

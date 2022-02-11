@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import { View, Switch, StyleSheet, Dimensions } from "react-native";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
+import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
+import { toggleMode } from "../store/actions/mode";
 
 const SettingsScreen = (props: any) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const toggleModeHandler = () => {
+    dispatch(toggleMode());
+  };
+
+  const dispatch = useDispatch();
+
+  const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+
+  const [isDarkMode, setIsDarkMode] = useState(mode === "dark" ? true : false);
 
   return (
-    <View style={styles.screen}>
+    <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
       <View
         style={
           Dimensions.get("window").width > 600
@@ -18,8 +28,12 @@ const SettingsScreen = (props: any) => {
         <DefaultText
           style={
             Dimensions.get("window").width > 600
-              ? styles.settingTitleLarge
-              : styles.settingTitle
+              ? isDarkMode
+                ? styles.settingTitleLargeDarkMode
+                : styles.settingTitleLargeLightMode
+              : isDarkMode
+              ? styles.settingTitleDarkMode
+              : styles.settingTitleLightMode
           }
         >
           Dark Mode:
@@ -27,12 +41,15 @@ const SettingsScreen = (props: any) => {
         <View style={styles.switchContainer}>
           <Switch
             trackColor={{
-              true: Colors.textBoxColor,
-              false: Colors.primaryColor,
+              true: Colors.textBoxColorDarkMode,
+              false: "#e8e8e8",
             }}
             thumbColor={"gray"}
             value={isDarkMode}
-            onValueChange={(newValue) => setIsDarkMode(newValue)}
+            onValueChange={(newValue) => {
+              toggleModeHandler();
+              setIsDarkMode(newValue);
+            }}
             style={
               Dimensions.get("window").width > 600
                 ? styles.switchLarge
@@ -46,10 +63,15 @@ const SettingsScreen = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
+  screenDarkMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.accentColorDarkMode,
+  },
+  screenLightMode: {
+    alignItems: "center",
+    flex: 1,
+    backgroundColor: Colors.accentColorLightMode,
   },
   settingContainerLarge: {
     flexDirection: "row",
@@ -65,10 +87,20 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 100,
   },
-  settingTitleLarge: {
+  settingTitleLargeDarkMode: {
+    color: Colors.primaryColorDarkMode,
     fontSize: 40,
   },
-  settingTitle: {},
+  settingTitleLargeLightMode: {
+    color: Colors.primaryColorLightMode,
+    fontSize: 40,
+  },
+  settingTitleDarkMode: {
+    color: Colors.primaryColorDarkMode,
+  },
+  settingTitleLightMode: {
+    color: Colors.primaryColorLightMode,
+  },
   switchLarge: {
     transform: [{ scaleX: 2 }, { scaleY: 2 }],
   },

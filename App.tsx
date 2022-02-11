@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import MonsterNavigator from "./navigation/MonsterNavigator";
+import { createStore, combineReducers } from "redux";
+import modeReducer from "./store/reducers/mode";
+import { Provider } from "react-redux";
+
+const rootReducer = combineReducers({
+  mode: modeReducer,
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -26,7 +35,11 @@ export default function App() {
     );
   }
 
-  return <MonsterNavigator />;
+  return (
+    <Provider store={store}>
+      <MonsterNavigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,5 @@
-import React from "react";
+// import AppLoading from "expo-app-loading";
+import React, { useEffect, useState } from "react";
 import {
   View,
   TouchableNativeFeedback,
@@ -6,11 +7,68 @@ import {
   StyleSheet,
 } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
 import DefaultText from "../components/DefaultText";
 import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
+// import * as Font from "expo-font";
+// import SettingsManipulation from "../functions/SettingsManipulation";
+// import { toggleMode } from "../store/actions/mode";
 
 const HomeScreen = (props: any) => {
+  const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+
+  const [isDarkMode, setIsDarkMode] = useState(mode === "dark" ? true : false);
+
+  useEffect(() => {
+    setIsDarkMode(mode === "dark" ? true : false);
+  });
+
+  // const [isModeLoaded, setIsModeLoaded] = useState(false);
+
+  // const dummyFetch = () => {
+  //   return Font.loadAsync({
+  //     "caveat": require("../assets/fonts/Caveat-Regular.ttf"),
+  //   });
+  // };
+
+  // const [settings] = useState(new SettingsManipulation());
+
+  // const toggleModeHandler = () => {
+  //   dispatch(toggleMode());
+  // };
+
+  // const dispatch = useDispatch();
+
+  // const modeHandler = async () => {
+  //   settings.storeLoadedSettings();
+  //   if (settings.getSettings().mode === "light") {
+  //     console.log("light");
+  //     toggleModeHandler();
+  //     toggleModeHandler();
+  //   } else {
+  //     console.log("dark");
+  //     toggleModeHandler();
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   settings.storeLoadedSettings();
+  //   modeHandler();
+  // });
+
+  // if (!isModeLoaded) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={dummyFetch}
+  //       onFinish={() => {
+  //         setIsModeLoaded(true);
+  //       }}
+  //       onError={(err) => console.log(err)}
+  //     />
+  //   );
+  // }
+
   return (
     <TouchableNativeFeedback
       onPress={() => {
@@ -19,12 +77,16 @@ const HomeScreen = (props: any) => {
         });
       }}
     >
-      <View style={styles.screen}>
+      <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
         <DefaultText
           style={
             Dimensions.get("window").width > 600
-              ? styles.largeIntro
-              : styles.intro
+              ? isDarkMode
+                ? styles.largeIntroDarkMode
+                : styles.largeIntroLightMode
+              : isDarkMode
+              ? styles.introDarkMode
+              : styles.introLightMode
           }
         >
           Ithrell's Catalogue of Critters and Beasts
@@ -32,8 +94,12 @@ const HomeScreen = (props: any) => {
         <DefaultText
           style={
             Dimensions.get("window").width > 600
-              ? styles.largeNotice
-              : styles.notice
+              ? isDarkMode
+                ? styles.largeNoticeDarkMode
+                : styles.largeNoticeLightMode
+              : isDarkMode
+              ? styles.noticeDarkMode
+              : styles.noticeLightMode
           }
         >
           (Tap to Open)
@@ -63,20 +129,52 @@ HomeScreen.navigationOptions = (navigationData: any) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
+  testBtn: {
+    backgroundColor: "#aaa",
+    marginVertical: 5,
+  },
+  screenDarkMode: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.accentColor,
+    backgroundColor: Colors.accentColorDarkMode,
   },
-  largeNotice: {
+  screenLightMode: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.accentColorLightMode,
+  },
+  largeNoticeDarkMode: {
+    color: Colors.primaryColorDarkMode,
     fontSize: 30,
   },
-  notice: {
+  largeNoticeLightMode: {
+    color: Colors.primaryColorLightMode,
+    fontSize: 30,
+  },
+  noticeDarkMode: {
+    color: Colors.primaryColorDarkMode,
     fontSize: 10,
   },
-  largeIntro: { fontSize: 50 },
-  intro: {},
+  noticeLightMode: {
+    color: Colors.primaryColorLightMode,
+    fontSize: 10,
+  },
+  largeIntroDarkMode: {
+    color: Colors.primaryColorDarkMode,
+    fontSize: 50,
+  },
+  largeIntroLightMode: {
+    color: Colors.primaryColorLightMode,
+    fontSize: 50,
+  },
+  introDarkMode: {
+    color: Colors.primaryColorDarkMode,
+  },
+  introLightMode: {
+    color: Colors.primaryColorLightMode,
+  },
 });
 
 export default HomeScreen;
