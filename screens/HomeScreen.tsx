@@ -139,51 +139,47 @@ HomeScreen.navigationOptions = (navigationData: any) => {
 };
 
 const styles = StyleSheet.create({
-  testBtn: {
-    backgroundColor: "#aaa",
-    marginVertical: 5,
-  },
   screenDarkMode: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.accentColorDarkMode,
+    backgroundColor: Colors.primaryColorDarkMode,
   },
   screenLightMode: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.accentColorLightMode,
+    backgroundColor: Colors.primaryColorLightMode,
   },
   largeNoticeDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 30,
   },
   largeNoticeLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 30,
   },
   noticeDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 10,
   },
   noticeLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 10,
   },
   largeIntroDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 50,
   },
   largeIntroLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 50,
   },
   introDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   introLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
 });
 

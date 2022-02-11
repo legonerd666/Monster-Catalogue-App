@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "caveat-bold",
     fontSize: 20,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
 });
 

@@ -412,27 +412,27 @@ const styles = StyleSheet.create({
   screenDarkMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorDarkMode,
+    backgroundColor: Colors.primaryColorDarkMode,
   },
   screenLightMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorLightMode,
+    backgroundColor: Colors.primaryColorLightMode,
   },
   largeTitleDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 50,
   },
   largeTitleLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 50,
   },
   titleDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 30,
   },
   titleLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 30,
   },
   infoBlockContainer: {
@@ -445,26 +445,26 @@ const styles = StyleSheet.create({
     paddingRight: 2,
     textAlign: "center",
     marginVertical: 10,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   largeInfoLightMode: {
     fontSize: 35,
     paddingRight: 2,
     textAlign: "center",
     marginVertical: 10,
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   infoDarkMode: {
     fontSize: 22,
     paddingRight: 2,
     textAlign: "center",
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   infoLightMode: {
     fontSize: 22,
     paddingRight: 2,
     textAlign: "center",
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
 });
 

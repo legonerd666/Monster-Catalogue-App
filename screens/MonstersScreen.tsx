@@ -57,7 +57,7 @@ const MonstersScreen = (props: any) => {
 
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
 
-  const [isDarkMode, setIsDarkMode] = useState(mode === "dark" ? true : false);
+  const [isDarkMode] = useState(mode === "dark" ? true : false);
 
   const [dataManipulation] = useState(new DataManipulation());
 
@@ -172,8 +172,8 @@ const MonstersScreen = (props: any) => {
             defaultValue={filterText}
             placeholderTextColor={
               isDarkMode
-                ? Colors.primaryColorDarkMode
-                : Colors.primaryColorLightMode
+                ? Colors.accentColorDarkMode
+                : Colors.accentColorLightMode
             }
             style={
               Dimensions.get("window").width > 600
@@ -259,8 +259,8 @@ const MonstersScreen = (props: any) => {
           defaultValue={filterText}
           placeholderTextColor={
             isDarkMode
-              ? Colors.primaryColorDarkMode
-              : Colors.primaryColorLightMode
+              ? Colors.accentColorDarkMode
+              : Colors.accentColorLightMode
           }
           style={
             Dimensions.get("window").width > 600
@@ -309,13 +309,13 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     paddingBottom: 120,
-    backgroundColor: Colors.accentColorDarkMode,
+    backgroundColor: Colors.primaryColorDarkMode,
   },
   screenLightMode: {
     width: "100%",
     flex: 1,
     paddingBottom: 120,
-    backgroundColor: Colors.accentColorLightMode,
+    backgroundColor: Colors.primaryColorLightMode,
   },
   searchBarContainerLargeDarkMode: {
     height: 80,
@@ -380,36 +380,36 @@ const styles = StyleSheet.create({
   largeTextInputDarkMode: {
     fontSize: 25,
     marginLeft: 20,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   largeTextInputLightMode: {
     fontSize: 25,
     marginLeft: 20,
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   textInputDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   textInputLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   noticeLargeDarkMode: {
     textAlign: "center",
     fontSize: 40,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   noticeLargeLightMode: {
     textAlign: "center",
     fontSize: 40,
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   noticeDarkMode: {
     textAlign: "center",
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   noticeLightMode: {
     textAlign: "center",
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   noticeContainerLarge: {
     justifyContent: "center",

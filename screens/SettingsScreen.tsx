@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
   screenDarkMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorDarkMode,
+    backgroundColor: Colors.primaryColorDarkMode,
   },
   screenLightMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorLightMode,
+    backgroundColor: Colors.primaryColorLightMode,
   },
   settingContainerLarge: {
     flexDirection: "row",
@@ -88,18 +88,18 @@ const styles = StyleSheet.create({
     height: 100,
   },
   settingTitleLargeDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 40,
   },
   settingTitleLargeLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 40,
   },
   settingTitleDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   settingTitleLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   switchLarge: {
     transform: [{ scaleX: 2 }, { scaleY: 2 }],

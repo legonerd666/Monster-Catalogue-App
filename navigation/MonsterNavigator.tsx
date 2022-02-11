@@ -44,12 +44,12 @@ const MonsterNavigator = createStackNavigator(
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor:
-          Platform.OS === "android" ? "black" : Colors.accentColorDarkMode,
+          Platform.OS === "android" ? "black" : Colors.primaryColorDarkMode,
       },
       headerTintColor:
         Platform.OS === "android"
-          ? Colors.primaryColorDarkMode
-          : Colors.primaryColorDarkMode,
+          ? Colors.accentColorDarkMode
+          : Colors.accentColorDarkMode,
       headerTitleStyle: {
         fontFamily: "caveat-bold",
         fontSize: 30,

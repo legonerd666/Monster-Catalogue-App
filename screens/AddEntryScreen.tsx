@@ -177,8 +177,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Name..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setName(text);
@@ -223,8 +223,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Danger Level..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setDangerLevel(text);
@@ -269,8 +269,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Species..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setSpecies(text);
@@ -315,8 +315,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Color..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setColor(text);
@@ -361,8 +361,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Size..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setSize(text);
@@ -407,8 +407,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Known Habitat..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setHabitat(text);
@@ -458,8 +458,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Stats..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setStatistics(text);
@@ -505,8 +505,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Abilities..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setAbilities(text);
@@ -552,8 +552,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Appearance..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setAppearance(text);
@@ -599,8 +599,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Description..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setDescription(text);
@@ -646,8 +646,8 @@ const AddEntryScreen = (props: any) => {
               placeholder="Enter Notes..."
               placeholderTextColor={
                 isDarkMode
-                  ? Colors.primaryColorDarkMode
-                  : Colors.primaryColorLightMode
+                  ? Colors.accentColorDarkMode
+                  : Colors.accentColorLightMode
               }
               onChangeText={(text) => {
                 setNotes(text);
@@ -717,27 +717,27 @@ const styles = StyleSheet.create({
   screenDarkMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorDarkMode,
+    backgroundColor: Colors.primaryColorDarkMode,
   },
   screenLightMode: {
     alignItems: "center",
     flex: 1,
-    backgroundColor: Colors.accentColorLightMode,
+    backgroundColor: Colors.primaryColorLightMode,
   },
   introDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 30,
   },
   introLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 30,
   },
   introLargeDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 55,
   },
   introLargeLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 55,
   },
   inputContainerDarkMode: {
@@ -850,34 +850,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   titleDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   titleLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   titleLargeDarkMode: {
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
     fontSize: 50,
   },
   titleLargeLightMode: {
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
     fontSize: 50,
   },
   inputTextDarkMode: {
     fontSize: 16,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   inputTextLightMode: {
     fontSize: 16,
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
   inputTextLargeDarkMode: {
     fontSize: 25,
-    color: Colors.primaryColorDarkMode,
+    color: Colors.accentColorDarkMode,
   },
   inputTextLargeLightMode: {
     fontSize: 25,
-    color: Colors.primaryColorLightMode,
+    color: Colors.accentColorLightMode,
   },
 });
 

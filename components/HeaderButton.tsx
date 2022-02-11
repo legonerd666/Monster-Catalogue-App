@@ -12,8 +12,8 @@ const CustomHeaderButton = (props: any) => {
       iconSize={30}
       color={
         Platform.OS === "android"
-          ? Colors.primaryColorDarkMode
-          : Colors.accentColorDarkMode
+          ? Colors.accentColorDarkMode
+          : Colors.primaryColorDarkMode
       }
     />
   );
