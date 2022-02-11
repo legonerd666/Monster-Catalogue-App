@@ -1,4 +1,4 @@
-// import AppLoading from "expo-app-loading";
+import AppLoading from "expo-app-loading";
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -11,9 +11,9 @@ import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
 import DefaultText from "../components/DefaultText";
 import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
-// import * as Font from "expo-font";
-// import SettingsManipulation from "../functions/SettingsManipulation";
-// import { toggleMode } from "../store/actions/mode";
+import * as Font from "expo-font";
+import { toggleMode } from "../store/actions/mode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeScreen = (props: any) => {
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
@@ -24,50 +24,60 @@ const HomeScreen = (props: any) => {
     setIsDarkMode(mode === "dark" ? true : false);
   });
 
-  // const [isModeLoaded, setIsModeLoaded] = useState(false);
+  const [isModeLoaded, setIsModeLoaded] = useState(false);
 
-  // const dummyFetch = () => {
-  //   return Font.loadAsync({
-  //     "caveat": require("../assets/fonts/Caveat-Regular.ttf"),
-  //   });
-  // };
+  const dummyFetch = () => {
+    return Font.loadAsync({
+      "caveat": require("../assets/fonts/Caveat-Regular.ttf"),
+    });
+  };
 
-  // const [settings] = useState(new SettingsManipulation());
+  const toggleModeHandler = () => {
+    dispatch(toggleMode());
+  };
 
-  // const toggleModeHandler = () => {
-  //   dispatch(toggleMode());
-  // };
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  const modeHandler = async () => {
+    let settings = { mode: "-1" };
+    try {
+      const jsonValue = await AsyncStorage.getItem("Settings");
+      if (jsonValue != null) {
+        settings = JSON.parse(jsonValue);
+      } else {
+        try {
+          const jsonValue = JSON.stringify({ mode: "dark" });
+          await AsyncStorage.setItem("Settings", jsonValue);
+        } catch (e) {
+          alert(e);
+        }
+        modeHandler();
+      }
+    } catch (e) {
+      alert(e);
+    }
 
-  // const modeHandler = async () => {
-  //   settings.storeLoadedSettings();
-  //   if (settings.getSettings().mode === "light") {
-  //     console.log("light");
-  //     toggleModeHandler();
-  //     toggleModeHandler();
-  //   } else {
-  //     console.log("dark");
-  //     toggleModeHandler();
-  //   }
-  // };
+    if (settings.mode === "light") {
+      await toggleModeHandler();
+      await toggleModeHandler();
+    } else {
+      await toggleModeHandler();
+    }
 
-  // useEffect(() => {
-  //   settings.storeLoadedSettings();
-  //   modeHandler();
-  // });
+    await setIsModeLoaded(true);
+  };
 
-  // if (!isModeLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={dummyFetch}
-  //       onFinish={() => {
-  //         setIsModeLoaded(true);
-  //       }}
-  //       onError={(err) => console.log(err)}
-  //     />
-  //   );
-  // }
+  if (!isModeLoaded) {
+    return (
+      <AppLoading
+        startAsync={dummyFetch}
+        onFinish={() => {
+          modeHandler();
+        }}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   return (
     <TouchableNativeFeedback

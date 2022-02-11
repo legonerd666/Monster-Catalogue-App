@@ -45,7 +45,7 @@ class SettingsManipulation {
     this.settings = newSettings;
   };
 
-  settings = { mode: "dark" };
+  settings = { mode: "light" };
 }
 
 export default SettingsManipulation;
