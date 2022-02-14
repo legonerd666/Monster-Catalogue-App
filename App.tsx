@@ -6,9 +6,14 @@ import MonsterNavigator from "./navigation/MonsterNavigator";
 import { createStore, combineReducers } from "redux";
 import modeReducer from "./store/reducers/mode";
 import { Provider } from "react-redux";
+import adsReducer from "./store/reducers/ads";
+
+//Android Banner: ca-app-pub-4647622601251202/9405272646
+//Android Interstitial: ca-app-pub-4647622601251202/4408096832
 
 const rootReducer = combineReducers({
   mode: modeReducer,
+  ads: adsReducer,
 });
 
 const store = createStore(rootReducer);

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Ithrell's Catalogue of Critters and Beasts",
+    "name": "Ithrell's Catalogue of Critters and Beasts Free",
     "slug": "monster-catalogue",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -22,9 +22,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "versionCode": 6,
+      "versionCode": 8,
       "permissions": [],
-      "package": "com.legonerd666.monstercatalogue"
+      "package": "com.legonerd666.monstercataloguefree",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4647622601251202~9924147398"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -15,6 +15,7 @@ import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
 import { RootStateOrAny, useSelector } from "react-redux";
+import { AdMobBanner } from "expo-ads-admob";
 
 const MonstersScreen = (props: any) => {
   const fetchData = () => {
@@ -56,6 +57,10 @@ const MonstersScreen = (props: any) => {
   };
 
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+
+  const adsBannerId = useSelector(
+    (state: RootStateOrAny) => state.ads.adBannerId
+  );
 
   const [isDarkMode] = useState(mode === "dark" ? true : false);
 
@@ -99,6 +104,11 @@ const MonstersScreen = (props: any) => {
   if (dataManipulation.getData().length == 0) {
     return (
       <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
+        <AdMobBanner
+          bannerSize="banner"
+          adUnitID={adsBannerId}
+          servePersonalizedAds={false}
+        />
         <View
           style={
             Dimensions.get("window").width > 600
@@ -152,6 +162,11 @@ const MonstersScreen = (props: any) => {
   if (filteredMonsters.length == 0) {
     return (
       <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
+        <AdMobBanner
+          bannerSize="banner"
+          adUnitID={adsBannerId}
+          servePersonalizedAds={false}
+        />
         <View
           style={
             Dimensions.get("window").width > 600
@@ -239,6 +254,11 @@ const MonstersScreen = (props: any) => {
 
   return (
     <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
+      <AdMobBanner
+        bannerSize="banner"
+        adUnitID={adsBannerId}
+        servePersonalizedAds={false}
+      />
       <View
         style={
           Dimensions.get("window").width > 600
@@ -310,12 +330,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 120,
     backgroundColor: Colors.primaryColorDarkMode,
+    alignItems: "center",
   },
   screenLightMode: {
     width: "100%",
     flex: 1,
     paddingBottom: 120,
     backgroundColor: Colors.primaryColorLightMode,
+    alignItems: "center",
   },
   searchBarContainerLargeDarkMode: {
     height: 80,

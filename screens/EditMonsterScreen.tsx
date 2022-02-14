@@ -16,6 +16,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import ColorPicker from "react-native-wheel-color-picker";
 import { useSelector, RootStateOrAny } from "react-redux";
+import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
 
 const EditMonsterScreen = (props: any) => {
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
@@ -69,6 +70,13 @@ const EditMonsterScreen = (props: any) => {
     setDataIsLoaded(true);
   };
 
+  const adsInterstitialId = useSelector(
+    (state: RootStateOrAny) => state.ads.adInterstitialId
+  );
+  const adsBannerId = useSelector(
+    (state: RootStateOrAny) => state.ads.adBannerId
+  );
+
   const saveHandler = () => {
     Alert.alert(
       "Save Edits?",
@@ -81,7 +89,7 @@ const EditMonsterScreen = (props: any) => {
         },
         {
           text: "OK",
-          onPress: () => {
+          onPress: async () => {
             const newMonsters = dataManipulation.getData();
 
             const editedMonster = {
@@ -107,6 +115,11 @@ const EditMonsterScreen = (props: any) => {
             newMonsters[monsterToReplaceIndex] = editedMonster;
             dataManipulation.setData(newMonsters);
             dataManipulation.saveData();
+            AdMobInterstitial.setAdUnitID(adsInterstitialId);
+            await AdMobInterstitial.requestAdAsync({
+              servePersonalizedAds: false,
+            });
+            await AdMobInterstitial.showAdAsync();
             props.navigation.popToTop();
           },
         },
@@ -126,7 +139,7 @@ const EditMonsterScreen = (props: any) => {
         },
         {
           text: "Delete",
-          onPress: () => {
+          onPress: async () => {
             const newMonsters = dataManipulation.getData();
             const monsterToDeleteIndex = newMonsters.findIndex(
               (monsterById) => monsterById.id === monsterId
@@ -134,6 +147,11 @@ const EditMonsterScreen = (props: any) => {
             newMonsters.splice(monsterToDeleteIndex, 1);
             dataManipulation.setData(newMonsters);
             dataManipulation.saveData();
+            AdMobInterstitial.setAdUnitID(adsInterstitialId);
+            await AdMobInterstitial.requestAdAsync({
+              servePersonalizedAds: false,
+            });
+            await AdMobInterstitial.showAdAsync();
             props.navigation.popToTop();
           },
         },
@@ -192,6 +210,11 @@ const EditMonsterScreen = (props: any) => {
         <View
           style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}
         >
+          <AdMobBanner
+            bannerSize="banner"
+            adUnitID={adsBannerId}
+            servePersonalizedAds={false}
+          />
           <View style={styles.introContainer}>
             <BoldText
               style={

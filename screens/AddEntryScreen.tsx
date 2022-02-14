@@ -17,6 +17,7 @@ import CustomHeaderButton from "../components/HeaderButton";
 import ColorPicker from "react-native-wheel-color-picker";
 import { v4 as uuid } from "uuid";
 import { RootStateOrAny, useSelector } from "react-redux";
+import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
 
 const AddEntryScreen = (props: any) => {
   const fetchData = () => {
@@ -42,6 +43,12 @@ const AddEntryScreen = (props: any) => {
   const [picture, setPicture] = useState("N/A");
 
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
+  const adsInterstitialId = useSelector(
+    (state: RootStateOrAny) => state.ads.adInterstitialId
+  );
+  const adsBannerId = useSelector(
+    (state: RootStateOrAny) => state.ads.adBannerId
+  );
 
   const [isDarkMode, setIsDarkMode] = useState(mode === "dark" ? true : false);
 
@@ -57,7 +64,7 @@ const AddEntryScreen = (props: any) => {
         },
         {
           text: "OK",
-          onPress: () => {
+          onPress: async () => {
             const newMonsters = dataManipulation.getData();
 
             const newMonster = {
@@ -81,6 +88,11 @@ const AddEntryScreen = (props: any) => {
 
             dataManipulation.setData(newMonsters);
             dataManipulation.saveData();
+            AdMobInterstitial.setAdUnitID(adsInterstitialId);
+            await AdMobInterstitial.requestAdAsync({
+              servePersonalizedAds: false,
+            });
+            await AdMobInterstitial.showAdAsync();
             props.navigation.popToTop();
           },
         },
@@ -125,6 +137,11 @@ const AddEntryScreen = (props: any) => {
         <View
           style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}
         >
+          <AdMobBanner
+            bannerSize="banner"
+            adUnitID={adsBannerId}
+            servePersonalizedAds={false}
+          />
           <View style={styles.introContainer}>
             <BoldText
               style={

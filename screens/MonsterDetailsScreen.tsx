@@ -8,11 +8,16 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
 import { useSelector, RootStateOrAny } from "react-redux";
+import { AdMobBanner } from "expo-ads-admob";
 
 const MonsterDetailsScreen = (props: any) => {
   const mode = useSelector((state: RootStateOrAny) => state.mode.mode);
 
   const [isDarkMode] = useState(mode === "dark" ? true : false);
+
+  const adsBannerId = useSelector(
+    (state: RootStateOrAny) => state.ads.adBannerId
+  );
 
   const dataManipulation = new DataManipulation();
 
@@ -60,6 +65,11 @@ const MonsterDetailsScreen = (props: any) => {
   return (
     <ScrollView>
       <View style={isDarkMode ? styles.screenDarkMode : styles.screenLightMode}>
+        <AdMobBanner
+          bannerSize="banner"
+          adUnitID={adsBannerId}
+          servePersonalizedAds={false}
+        />
         <View style={styles.infoBlockContainer}>
           <BoldText
             style={
